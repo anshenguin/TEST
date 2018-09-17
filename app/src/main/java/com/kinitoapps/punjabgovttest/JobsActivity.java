@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -26,14 +27,17 @@ public class JobsActivity extends AppCompatActivity {
     JobsAdapter jobsAdapter;
     HashMap<String,String> hashMap;
     List<Jobs> jobsList;
+    private SQLiteHandler db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jobs);
-        Intent intent = getIntent();
-        hashMap = (HashMap<String, String>)intent.getSerializableExtra("hashmap");
-
+        db = new SQLiteHandler(getApplicationContext());
+        hashMap = new HashMap<>();
+        hashMap.put("course",db.getUserDetails().get("course"));
+        hashMap.put("field",db.getUserDetails().get("field"));
         jobsList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -45,6 +49,7 @@ public class JobsActivity extends AppCompatActivity {
     }
 
     private void loadSpinnerData() {
+        Log.d("LOGGINGME", String.valueOf(hashMap));
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_JOBS+hashMap.get("course")+"&f="
                 + hashMap.get("field"),
                 new Response.Listener<String>() {
