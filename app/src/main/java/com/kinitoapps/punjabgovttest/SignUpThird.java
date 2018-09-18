@@ -28,6 +28,7 @@ public class SignUpThird extends AppCompatActivity {
     public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/register.php";
     SQLiteHandler db;
     private ProgressDialog pDialog;
+    public static String URL_LOGIN = "https://governmentappcom.000webhostapp.com/login.php";
 
 
     @Override
@@ -52,13 +53,93 @@ public class SignUpThird extends AppCompatActivity {
                 if(password.getText().toString().equals(confpassword.getText().toString())){
                     hashMap.put("email",email.getText().toString());
                     hashMap.put("password",password.getText().toString());
-                    Intent intent1 = new Intent(SignUpThird.this,JobsActivity.class);
-                    intent1.putExtra("hashmap",hashMap);
                     registerUser();
-                    startActivity(intent1);
                 }
             }
         });
+
+    }
+
+    private void checkLogin(final String email, final String password) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_login";
+
+        pDialog.setMessage("Logging in ...");
+        showDialog();
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                URL_LOGIN, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d("TAG", "Login Response: " + response.toString());
+                hideDialog();
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+
+                    // Check for error node in json
+                    if (!error) {
+                        // user successfully logged in
+                        // Create login session
+                        session.setLogin(true);
+
+                        // Now store the user in SQLite
+
+                        JSONObject user = jObj.getJSONObject("user");
+                        String name = user.getString("name");
+                        String email = user.getString("email");
+                        String course = user.getString("course");
+                        String field = user.getString("field");
+
+                        // Inserting row in users table
+
+                        Intent intent = new Intent(
+                                SignUpThird.this,
+                                LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                        // Launch main activity
+
+                    } else {
+                        // Error in login. Get the error message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("TAG", "Login Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", email);
+                params.put("password", password);
+
+                return params;
+            }
+
+        };
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
     private void registerUser() {
         // Tag used to cancel the request
@@ -90,15 +171,16 @@ public class SignUpThird extends AppCompatActivity {
 
                         // Inserting row in users table
                         db.addUser(name, email, course, field);
+                        session.setLogin(true);
+                        Log.d("LOGGINGME1", String.valueOf(db));
+                        Intent intent1 = new Intent(SignUpThird.this,JobsActivity.class);
+                        startActivity(intent1);
 
-                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
+
+
+//                        Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
                         // Launch login activity
-                        Intent intent = new Intent(
-                                SignUpThird.this,
-                                LoginActivity.class);
-                        startActivity(intent);
-                        finish();
                     } else {
 
                         // Error occurred in registration. Get the error
@@ -109,6 +191,7 @@ public class SignUpThird extends AppCompatActivity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(SignUpThird.this, "error aagya", Toast.LENGTH_SHORT).show();
                 }
 
             }
