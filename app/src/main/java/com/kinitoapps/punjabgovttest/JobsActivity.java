@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -27,6 +30,8 @@ public class JobsActivity extends AppCompatActivity {
     JobsAdapter jobsAdapter;
     HashMap<String,String> hashMap;
     List<Jobs> jobsList;
+    SessionManager session;
+
     private SQLiteHandler db;
 
 
@@ -35,6 +40,18 @@ public class JobsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jobs);
         db = new SQLiteHandler(getApplicationContext());
+        Button logout = findViewById(R.id.logout);
+        TextView tv = findViewById(R.id.welcome);
+        session = new SessionManager(getApplicationContext());
+
+        tv.setText("Welcome "+db.getUserDetails().get("name"));
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logoutUser();
+
+            }
+        });
         hashMap = new HashMap<>();
         hashMap.put("course",db.getUserDetails().get("course"));
         hashMap.put("field",db.getUserDetails().get("field"));
@@ -46,6 +63,17 @@ public class JobsActivity extends AppCompatActivity {
         recyclerView.setAdapter(jobsAdapter);
         loadSpinnerData();
 
+    }
+
+    private void logoutUser() {
+        session.setLogin(false);
+
+        db.deleteUsers();
+
+        // Launching the login activity
+        Intent intent = new Intent(JobsActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void loadSpinnerData() {
