@@ -3,6 +3,7 @@ package com.kinitoapps.punjabgovttest;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -57,12 +58,15 @@ public class JobsActivity extends AppCompatActivity {
         hashMap.put("field",db.getUserDetails().get("field"));
         tv.setText("Welcome "+hashMap.get("name"));
 
+
         jobsList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         jobsAdapter = new JobsAdapter(this,jobsList);
         recyclerView.setAdapter(jobsAdapter);
+        DividerItemDecoration itemDecor = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(itemDecor);
         loadSpinnerData();
 
     }
@@ -90,8 +94,7 @@ public class JobsActivity extends AppCompatActivity {
                             JSONArray array = new JSONArray(response);
                             for(int i=0;i<array.length();i++) {
                                 JSONObject jsonObject1 = array.getJSONObject(i);
-                                jobsList.add(new Jobs(jsonObject1.getString("job")));
-
+                                jobsList.add(new Jobs(jsonObject1.getString("job"),jsonObject1.getString("org")));
                             }
 
 

@@ -6,10 +6,10 @@ package com.kinitoapps.punjabgovttest;
 
 public class Jobs {
 
-    private String name;
+    private String name,companyName;
 
-    public Jobs(String name){
-        this.name = name;
+    public Jobs(String name, String companyName){
+        this.name = name; this.companyName = companyName;
     }
 
     public String getName() {
@@ -18,5 +18,13 @@ public class Jobs {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }

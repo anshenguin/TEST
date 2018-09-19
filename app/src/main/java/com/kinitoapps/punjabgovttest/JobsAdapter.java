@@ -3,9 +3,11 @@ package com.kinitoapps.punjabgovttest;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import java.util.List;
@@ -30,9 +32,11 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         Jobs jobs = jobsList.get(position);
         holder.textViewName.setText(jobs.getName());
+        holder.textViewCompanyName.setText(jobs.getCompanyName());
+
 
     }
 
@@ -43,11 +47,11 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewName;
+        TextView textViewName, textViewCompanyName;
 
         public ViewHolder(final View itemView) {
             super(itemView);
-
+            textViewCompanyName = itemView.findViewById(R.id.company_name);
             textViewName = itemView.findViewById(R.id.job_name);
         }
     }
