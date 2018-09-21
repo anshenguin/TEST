@@ -94,7 +94,8 @@ public class JobsActivity extends AppCompatActivity {
                             JSONArray array = new JSONArray(response);
                             for(int i=0;i<array.length();i++) {
                                 JSONObject jsonObject1 = array.getJSONObject(i);
-                                jobsList.add(new Jobs(jsonObject1.getString("job"),jsonObject1.getString("org")));
+                                jobsList.add(new Jobs(jsonObject1.getString("job"),jsonObject1.getString("org"),
+                                        jsonObject1.getString("logo")));
                             }
 
 
