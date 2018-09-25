@@ -1,48 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:color/white"
     android:layout_height="match_parent"
     tools:context="com.kinitoapps.punjabgovttest.JobsInsideActivity">
 
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapse_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <ImageView
-                android:id="@+id/toolbar_image"
+            <LinearLayout
+                android:id="@+id/main_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fitsSystemWindows="true"
-                android:scaleType="fitXY"
-                app:layout_collapseMode="parallax" />
+                android:orientation="vertical"
+                android:fitsSystemWindows="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:elevation="10dp"
-                app:layout_collapseMode="pin"
-                 />
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="100dp"
+                        android:layout_margin="16dp"
+                        android:scaleType="fitStart"
+                        android:layout_height="100dp"
+                        />
 
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_height="wrap_content"
+                        android:text="Company Name"
+                        android:ellipsize="end"
+                        android:id="@+id/name"
+                        android:textColor="#555"
+                        android:textSize="18sp"
+                        android:layout_alignTop="@+id/logo"
+                        android:layout_toEndOf="@+id/logo" />
 
 
-    <include layout="@layout/jobs_inside_main_layout" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/job"
+                    android:textSize="16sp"
+                    android:layout_margin="16dp"
+                    android:text="Job Name"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/info"
+                    android:textSize="16sp"
+                    android:layout_below="@id/logo"
+                    android:layout_margin="16dp"
+                    android:text="Information"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add"
+                    android:textSize="16sp"
+                    android:layout_below="@id/logo"
+                    android:layout_margin="16dp"
+                    android:text="Address"/>
+            </LinearLayout>
 
 
 
-</android.support.design.widget.CoordinatorLayout>
+
+
+</ScrollView>

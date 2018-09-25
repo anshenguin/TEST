@@ -1,6 +1,7 @@
 package com.kinitoapps.punjabgovttest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -46,7 +47,7 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        Jobs jobs = jobsList.get(position);
+        final Jobs jobs = jobsList.get(position);
         holder.textViewName.setText(jobs.getName());
         holder.textViewCompanyName.setText(jobs.getCompanyName());
         Glide.with(mCtx)
@@ -68,9 +69,14 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .error(R.drawable.ic_no_logo))
                 .into(holder.imageViewLogo);
-
-
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mCtx, JobsInsideActivity.class);
+                intent.putExtra("jobID", jobs.getID());
+                mCtx.startActivity(intent);
+            }
+        });
     }
 
     @Override

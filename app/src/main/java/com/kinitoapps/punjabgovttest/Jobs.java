@@ -6,11 +6,12 @@ package com.kinitoapps.punjabgovttest;
 
 public class Jobs {
 
-    private String name,companyName,logo,info,date;
+    private String name,companyName,logo,info,date,ID;
 
-    public Jobs(String name, String companyName, String logo){
+    public Jobs(String name, String companyName, String logo, String ID){
         this.name = name; this.companyName = companyName;
         this.logo = logo;
+        this.ID = ID;
     }
 
     public Jobs(String name, String companyName, String logo, String info, String date){
@@ -59,5 +60,13 @@ public class Jobs {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

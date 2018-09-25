@@ -128,9 +128,10 @@ public class LoginActivity extends AppCompatActivity {
                         String email = user.getString("email");
                         String course = user.getString("course");
                         String field = user.getString("field");
+                        String percentage = user.getString("percentage");
 
                         // Inserting row in users table
-                        db.addUser(name, email, course, field);
+                        db.addUser(name, email, course, field, percentage);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

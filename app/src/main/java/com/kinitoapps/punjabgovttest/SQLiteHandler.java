@@ -33,6 +33,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_COURSE = "course";
     private static final String KEY_FIELD = "field";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_PERCENTAGE = "percentage";
+
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
 
@@ -46,6 +48,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
                 + KEY_EMAIL + " TEXT UNIQUE,"+
+                KEY_PERCENTAGE + " TEXT,"+
                 KEY_COURSE + " TEXT,"+
                 KEY_FIELD + " TEXT"
                 + ")";
@@ -67,14 +70,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String email, String course, String field) {
+    public void addUser(String name, String email, String course, String field, String percentage) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name); // Name
         values.put(KEY_EMAIL, email);
         values.put(KEY_COURSE, course); // Name
-        values.put(KEY_FIELD, field);// Email
+        values.put(KEY_FIELD, field);
+        values.put(KEY_PERCENTAGE,percentage);// Email
 
         // Inserting Row
         long id = db.insert(TABLE_USER, null, values);
@@ -97,8 +101,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (cursor.getCount() > 0) {
             user.put("name", cursor.getString(1));
             user.put("email", cursor.getString(2));
-            user.put("course", cursor.getString(3));
-            user.put("field", cursor.getString(4));
+            user.put("percentage", cursor.getString(3));
+            user.put("course", cursor.getString(4));
+            user.put("field", cursor.getString(5));
         }
         cursor.close();
         db.close();
