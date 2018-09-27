@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class SignUpFirst extends AppCompatActivity {
 
     String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinner.php";
     String URL_SPINNER2 = "https://governmentappcom.000webhostapp.com/spinneredu.php";
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sign_up_first);
         locations = new ArrayList<>();
         education = new ArrayList<>();
         final TextInputEditText fullName = findViewById(R.id.fullnameedittext);
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         hashMap = new HashMap<>();
         spinnerLocation = findViewById(R.id.location);
         spinnerEducation = findViewById(R.id.education);
-        arrayAdapter2 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, education);
-        arrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, locations);
+        arrayAdapter2 = new ArrayAdapter<String>(SignUpFirst.this, android.R.layout.simple_spinner_dropdown_item, education);
+        arrayAdapter = new ArrayAdapter<String>(SignUpFirst.this, android.R.layout.simple_spinner_dropdown_item, locations);
         spinnerLocation.setAdapter(arrayAdapter);
         spinnerEducation.setAdapter(arrayAdapter2);
         loadSpinnerData();
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SignUpSecond.class);
+                Intent intent = new Intent(SignUpFirst.this,SignUpSecond.class);
                 hashMap.put("name",fullName.getText().toString());
                 hashMap.put("phone",phNo.getText().toString());
                 hashMap.put("location", spinnerLocation.getSelectedItem().toString());

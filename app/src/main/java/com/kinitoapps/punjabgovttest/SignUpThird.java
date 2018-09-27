@@ -28,7 +28,6 @@ public class SignUpThird extends AppCompatActivity {
     public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/register.php";
     SQLiteHandler db;
     private ProgressDialog pDialog;
-    public static String URL_LOGIN = "https://governmentappcom.000webhostapp.com/login.php";
 
 
     @Override

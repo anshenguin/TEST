@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kinitoapps.punjabgovttest.FirstRunActivity">
+    tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
+
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:id="@+id/sign_up"
+        android:id="@+id/seeker"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="#4DD0E1"
-        android:layout_height="80dp">
+        android:background="#6269E7"
+        android:layout_height="100dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -22,10 +25,10 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
-                app:srcCompat="@drawable/ic_person_add_black_24dp"
+                app:srcCompat="@drawable/ic_find_in_page_black_24dp"
                 android:id="@+id/imageView4" />
 
             <TextView
@@ -33,21 +36,21 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_marginStart="14dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textColor="#000"
                 android:textStyle="bold"
-                android:text="Register" />
+                android:text="Looking for Jobs?" />
 
         </LinearLayout>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:id="@+id/sign_in"
+        android:id="@+id/giver"
+        app:layout_constraintTop_toBottomOf="@id/seeker"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sign_up"
-        android:background="#F48FB1"
-        android:layout_height="80dp">
+        android:background="#AB55E5"
+        android:layout_height="100dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -56,23 +59,24 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
-                app:srcCompat="@drawable/ic_vpn_key_black_24dp"
-                android:id="@+id/imageView3" />
+                app:srcCompat="@drawable/ic_person_add_black_24dp"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_marginStart="14dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textColor="#000"
                 android:textStyle="bold"
-                android:text="Sign In" />
+                android:text="Looking to Hire?" />
 
         </LinearLayout>
     </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>
