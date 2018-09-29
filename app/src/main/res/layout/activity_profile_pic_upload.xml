@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kinitoapps.punjabgovttest.ProfilePicUPload"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+
+        android:id="@+id/profile_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:src="@drawable/profilepic"
+        app:civ_border_color="#83C9FF"
+        app:civ_border_width="4dp" />
+
+    <Button
+        android:id="@+id/nextbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:text="NEXT >" />
+    <Button
+        android:id="@+id/skpbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:text="SKIP >" />
+
+</LinearLayout>

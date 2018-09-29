@@ -3,6 +3,7 @@
     package="com.kinitoapps.punjabgovttest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".AppController"
@@ -30,7 +31,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpFirstComp" />
-        <activity android:name=".LoginActivityCompany"></activity>
+        <activity android:name=".LoginActivityCompany" />
+        <activity android:name=".ProfilePicUPload"></activity>
     </application>
 
 </manifest>

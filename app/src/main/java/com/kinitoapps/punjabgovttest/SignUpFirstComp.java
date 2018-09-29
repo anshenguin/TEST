@@ -15,12 +15,16 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpFirstComp extends AppCompatActivity {
 
     public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/register.php";
     private ProgressDialog pDialog;
+    SQLiteHandler db;
+    SessionManager session;
+    HashMap<String,String> hashMap;
 
 
     @Override
@@ -56,16 +60,17 @@ public class SignUpFirstComp extends AppCompatActivity {
 
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
-                        String email = user.getString("phone");
+                        String phone = user.getString("phone");
                         String course = user.getString("course");
                         String field = user.getString("field");
                         String percentage = user.getString("percentage");
+                        String email = user.getString("email");
 
                         // Inserting row in users table
-                        db.addUser(name, email, course, field, percentage );
+                        db.addUser(name, phone, course, field, percentage ,email);
                         session.setLogin(true);
                         Log.d("LOGGINGME1", String.valueOf(db));
-                        Intent intent1 = new Intent(SignUpThird.this,JobsActivity.class);
+                        Intent intent1 = new Intent(SignUpFirstComp.this,JobsActivity.class);
                         startActivity(intent1);
 
 
@@ -83,7 +88,7 @@ public class SignUpFirstComp extends AppCompatActivity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(SignUpThird.this, "error aagya", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpFirstComp.this, "error aagya", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -106,10 +111,12 @@ public class SignUpFirstComp extends AppCompatActivity {
 //                params.put("phone", email);
 //                params.put("password", password);
 
-                return hashMap;
+             return hashMap;
             }
 
+
         };
+
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);

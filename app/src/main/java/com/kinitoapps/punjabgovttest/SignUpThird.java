@@ -162,18 +162,20 @@ public class SignUpThird extends AppCompatActivity {
                         // User successfully stored in MySQL
                         // Now store the user in sqlite
 
+
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
-                        String email = user.getString("phone");
+                        String phone = user.getString("phone");
                         String course = user.getString("course");
                         String field = user.getString("field");
                         String percentage = user.getString("percentage");
+                        String email = user.getString("email");
 
                         // Inserting row in users table
-                        db.addUser(name, email, course, field, percentage );
+                        db.addUser(name, phone, course, field, percentage,email );
                         session.setLogin(true);
                         Log.d("LOGGINGME1", String.valueOf(db));
-                        Intent intent1 = new Intent(SignUpThird.this,JobsActivity.class);
+                        Intent intent1 = new Intent(SignUpThird.this,ProfilePicUPload.class);
                         startActivity(intent1);
 
 

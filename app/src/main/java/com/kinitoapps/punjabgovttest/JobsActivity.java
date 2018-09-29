@@ -58,7 +58,6 @@ public class JobsActivity extends AppCompatActivity {
         hashMap.put("name",db.getUserDetails().get("name"));
         hashMap.put("course",db.getUserDetails().get("course"));
         hashMap.put("field",db.getUserDetails().get("field"));
-        hashMap.put("percentage",db.getUserDetails().get("percentage"));
         tv.setText("Welcome "+hashMap.get("name"));
 
 
