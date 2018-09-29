@@ -7,76 +7,109 @@
     tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
 
 
-
-
-    <RelativeLayout
+    <ImageView
         android:layout_width="match_parent"
-        android:id="@+id/seeker"
+        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bannerdone"
+        android:background="#192940"
+
+        android:id="@+id/banner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="#6269E7"
-        android:layout_height="100dp">
+        />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center_vertical"
-                app:srcCompat="@drawable/ic_find_in_page_black_24dp"
-                android:id="@+id/imageView4" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginStart="14dp"
-                android:textSize="20sp"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:text="Looking for Jobs?" />
-
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/giver"
-        app:layout_constraintTop_toBottomOf="@id/seeker"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#5CAAEA"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="#AB55E5"
-        android:layout_height="100dp">
+        app:layout_constraintTop_toBottomOf="@id/banner"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="Sign In"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center_vertical"
-                app:srcCompat="@drawable/ic_person_add_black_24dp"
-                />
+            <RelativeLayout
+                android:id="@+id/giver"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="#AB55E5 ">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginStart="14dp"
-                android:textSize="20sp"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:text="Looking to Hire?" />
+                <ImageView
+                    android:id="@+id/icon_1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_usher_man_with_tie" />
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="Recruiters"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/seeker"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="#6A71ED">
+
+                <ImageView
+                    android:id="@+id/icon_2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_find_in_page_black_24dp" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="Job Seekers"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>

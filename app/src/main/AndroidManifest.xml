@@ -18,11 +18,11 @@
         <activity android:name=".JobsActivity" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".JobsInsideActivity" />
         <activity
             android:name=".LauncherActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignUpFirstComp" />
-        <activity android:name=".LoginActivityCompany"></activity>
+        <activity android:name=".LoginActivityCompany" />
+        <activity android:name=".SignUpSecondComp"></activity>
     </application>
 
 </manifest>

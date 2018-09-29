@@ -18,7 +18,7 @@
                 android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome to Ghar Ghar Rozgar Mobile App"
+                android:text="Company Registration"
                 android:layout_margin="16dp"
                 android:textSize="24sp"
                 android:gravity="center"
@@ -26,152 +26,96 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Company Name"
+                android:padding="12dp"
                 android:layout_margin="16dp"
-                android:id="@+id/fullname"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/fullnameedittext"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/test">
+                app:layout_constraintTop_toBottomOf="@id/test"
+                android:background="@drawable/rounded_corners"/>
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Company Name"
-                    android:id="@+id/fullnameedittext"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:maxLines="1"
+                android:padding="12dp"
                 android:layout_margin="16dp"
-                android:id="@+id/phonenumber"
+                android:maxLength="10"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/phonenumberedittext"
+                android:inputType="phone"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fullname">
+                app:layout_constraintTop_toBottomOf="@id/fullnameedittext"
+                android:background="@drawable/rounded_corners"/>
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Phone Number"
-                    android:inputType="number"
-                    android:id="@+id/phonenumberedittext"
-                    android:maxLength="10"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Optional Phone Number"
+                android:maxLines="1"
+                android:padding="12dp"
                 android:layout_margin="16dp"
-                android:id="@+id/phonenumbersec"
+                android:maxLength="10"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/optionalphonenumberedittext"
+                android:inputType="phone"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/phonenumber">
+                app:layout_constraintTop_toBottomOf="@id/phonenumberedittext"
+                android:background="@drawable/rounded_corners"/>
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="2nd Phone Number"
-                    android:inputType="number"
-                    android:id="@+id/phonenumberedittextsec"
-                    android:maxLength="10"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Address"
+                android:maxLines="1"
+                android:padding="12dp"
                 android:layout_margin="16dp"
-                android:id="@+id/emailaddress"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/addressedittext"
+                android:inputType="textPostalAddress"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/phonenumbersec">
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Email Address"
-                    android:inputType="number"
-                    android:id="@+id/emailaddressedittext"
-                    android:maxLength="10"
-                    />
-            </android.support.design.widget.TextInputLayout>
+                app:layout_constraintTop_toBottomOf="@id/optionalphonenumberedittext"
+                android:background="@drawable/rounded_corners"/>
 
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:id="@+id/address"
+                android:text="City"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/citytext"
+                app:layout_constraintTop_toBottomOf="@id/addressedittext"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/emailaddress">
+                android:textSize="16sp"/>
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Address"
-                    android:inputType="number"
-                    android:id="@+id/addedittext"
-                    android:maxLength="10"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/city"
+                android:spinnerMode="dialog"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/address"
-                android:id="@+id/password"
-                >
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:id="@+id/passwordedittext"
-                    android:maxLines="1"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:id="@+id/confpassword"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/password"
-                >
-
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:id="@+id/confpasswordedittext"
-                    android:maxLines="1"
-                    />
-            </android.support.design.widget.TextInputLayout>
+                app:layout_constraintTop_toBottomOf="@id/citytext" />
 
             <Button
-                android:layout_width="120dp"
-                android:text="Register"
-                android:layout_gravity="center"
                 android:id="@+id/reg"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:text="NEXT >"
+                android:padding="12dp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/confpassword"
-                android:layout_height="wrap_content" />
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/city" />
 
 
 

@@ -68,10 +68,7 @@ public class JobsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         jobsAdapter = new JobsAdapter(this,jobsList);
         recyclerView.setAdapter(jobsAdapter);
-        DividerItemDecoration itemDecor = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(itemDecor);
         jobList();
-
     }
 
     private void logoutUser() {
