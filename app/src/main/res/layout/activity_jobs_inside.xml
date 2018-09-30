@@ -47,16 +47,17 @@
                         android:id="@+id/job"
                         android:textColor="#555"
                         android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:layout_alignTop="@+id/logo"
-                        android:layout_toEndOf="@+id/logo" />
+                        android:textSize="16sp"
+                        android:layout_alignTop="@id/logo"
+                        android:layout_toEndOf="@id/logo" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/job"
+                        android:layout_below="@id/job"
+                        android:id="@+id/salary"
                         android:layout_marginTop="8dp"
-                        android:layout_toEndOf="@+id/logo"
+                        android:layout_toEndOf="@id/logo"
                         android:text="₹ 10000 p.m." />
 
 
@@ -69,8 +70,8 @@
                     <ImageView
                         android:id="@+id/work"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_marginTop="16dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_marginStart="8dp"
@@ -82,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
                         android:text="Company Name"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintLeft_toRightOf="@id/work"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -90,8 +91,8 @@
                     <ImageView
                         android:id="@+id/infologo"
                         app:layout_constraintTop_toBottomOf="@id/name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_marginTop="16dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_marginStart="8dp"
@@ -103,15 +104,15 @@
                         android:layout_margin="16dp"
                         app:layout_constraintLeft_toRightOf="@id/infologo"
                         android:text="Information"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/name" />
 
                     <ImageView
                         android:id="@+id/locationlogo"
                         app:layout_constraintTop_toBottomOf="@id/info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_marginTop="16dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_marginStart="8dp"
@@ -128,14 +129,14 @@
                         app:layout_constraintLeft_toRightOf="@id/locationlogo"
                         android:layout_marginStart="8dp"
                         android:text="Address"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintTop_toBottomOf="@id/info" />
 
                     <ImageView
                         android:id="@+id/maillogo"
                         app:layout_constraintTop_toBottomOf="@id/add"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_marginTop="16dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_marginStart="8dp"
@@ -152,14 +153,14 @@
                         app:layout_constraintLeft_toRightOf="@id/locationlogo"
                         android:layout_marginStart="8dp"
                         android:text="mail@email.com"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintTop_toBottomOf="@id/add" />
 
                     <ImageView
                         android:id="@+id/phonelogo"
                         app:layout_constraintTop_toBottomOf="@id/mail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_marginTop="16dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         android:layout_marginStart="8dp"
@@ -169,9 +170,12 @@
                         android:id="@+id/phone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginRight="16dp"
                         android:text="0987654321"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toRightOf="@id/locationlogo"
                         app:layout_constraintRight_toRightOf="parent"
@@ -192,6 +196,7 @@
                 android:layout_height="wrap_content"
                 android:text="Role"
                 android:textStyle="bold"
+                android:textSize="12sp"
                 android:id="@+id/roletextview"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -206,7 +211,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="4dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:layout_height="wrap_content"
             android:text="Role Name Here"/>
 
@@ -216,6 +221,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:textStyle="bold"
+            android:textSize="12sp"
             android:id="@+id/employmenttypetextview"
             android:text="Employment Type"
             app:layout_constraintStart_toStartOf="parent"
@@ -230,7 +236,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="4dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:layout_height="wrap_content"
             android:text="Full Time"/>
 
@@ -243,6 +249,7 @@
             android:layout_marginTop="16dp"
             android:textStyle="bold"
             android:text="Requirements"
+            android:textSize="12sp"
             android:layout_height="wrap_content" />
         
         <TextView
@@ -254,7 +261,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="B.Tech CSE (Min 60%)"
             app:layout_constraintTop_toBottomOf="@id/requirementstextview"

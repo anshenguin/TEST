@@ -3,6 +3,7 @@
     package="com.kinitoapps.punjabgovttest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".AppController"
@@ -31,7 +32,8 @@
         </activity>
         <activity android:name=".SignUpFirstComp" />
         <activity android:name=".LoginActivityCompany" />
-        <activity android:name=".SignUpSecondComp"></activity>
+        <activity android:name=".SignUpSecondComp"/>
+        <activity android:name=".ProfilePicUPload"/>
     </application>
 
 </manifest>

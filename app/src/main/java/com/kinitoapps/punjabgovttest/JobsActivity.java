@@ -55,10 +55,10 @@ public class JobsActivity extends AppCompatActivity {
             }
         });
         hashMap = new HashMap<>();
-        hashMap.put("name",db.getUserDetails().get("name"));
         hashMap.put("course",db.getUserDetails().get("course"));
         hashMap.put("field",db.getUserDetails().get("field"));
-        tv.setText("Welcome "+hashMap.get("name"));
+        hashMap.put("percentage",db.getUserDetails().get("percentage"));
+        tv.setText("Welcome "+db.getUserDetails().get("name"));
 
 
         jobsList = new ArrayList<>();
@@ -167,12 +167,9 @@ public class JobsActivity extends AppCompatActivity {
 //                hideDialog();
             }
         }) {
-
             @Override
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
-
-
                 return hashMap;
             }
 

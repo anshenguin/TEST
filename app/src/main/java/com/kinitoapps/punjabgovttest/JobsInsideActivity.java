@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class JobsInsideActivity extends AppCompatActivity {
     String URL_JOBS = "https://governmentappcom.000webhostapp.com/job_info.php?id=";
     String jobID;
-    TextView name, job, info, address;
+    TextView name, job, info, address, salary, email, phone;
     ImageView imageViewLogo;
 
     @Override
@@ -35,10 +35,14 @@ public class JobsInsideActivity extends AppCompatActivity {
         b = getIntent().getExtras();
         jobID = b.getString("jobID");
         name = findViewById(R.id.name);
+        email = findViewById(R.id.mail);
         job = findViewById(R.id.job);
         info = findViewById(R.id.info);
         address = findViewById(R.id.add);
         imageViewLogo = findViewById(R.id.logo);
+        salary = findViewById(R.id.salary);
+        phone = findViewById(R.id.phone);
+
         jobData();
     }
 
@@ -56,7 +60,10 @@ public class JobsInsideActivity extends AppCompatActivity {
                                 name.setText(jsonObject1.getString("org"));
                                 job.setText(jsonObject1.getString("job"));
                                 info.setText(jsonObject1.getString("info"));
+                                salary.setText(jsonObject1.getString("salary"));
                                 address.setText(jsonObject1.getString("address"));
+                                email.setText(jsonObject1.getString("email"));
+                                phone.setText(jsonObject1.getString("phone"));
                                 Glide.with(JobsInsideActivity.this)
                                         .load(jsonObject1.getString("logolink"))
                                         .apply(new RequestOptions()
