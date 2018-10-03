@@ -5,30 +5,70 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpFirstComp extends AppCompatActivity {
 
     public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/register.php";
+    String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinner.php";
+    ArrayAdapter<String> arrayAdapter;
     private ProgressDialog pDialog;
+    private Spinner city;
+    HashMap<String,String> hashMap;
+    Button reg;
+    ArrayList<String> locations;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        reg = findViewById(R.id.reg);
+        hashMap = new HashMap<>();
+        locations = new ArrayList<>();
+        final EditText fullnameedittext = findViewById(R.id.fullnameedittext);
+        final EditText phonenumber = findViewById(R.id.phonenumberedittext);
+        final EditText optionalphonenumber = findViewById(R.id.optionalphonenumberedittext);
+        final EditText addressedittext = findViewById(R.id.addressedittext);
+        arrayAdapter = new ArrayAdapter<String>(SignUpFirstComp.this, android.R.layout.simple_spinner_dropdown_item, locations);
         setContentView(R.layout.activity_sign_up_first_comp);
+        city = findViewById(R.id.city);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
+        reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUpFirstComp.this,SignUpSecondComp.class);
+                hashMap.put("name",fullnameedittext.getText().toString());
+                hashMap.put("phone",phonenumber.getText().toString());
+                hashMap.put("phonesec",optionalphonenumber.getText().toString());
+                hashMap.put("address", addressedittext.getText().toString());
+                hashMap.put("city",city.getSelectedItem().toString());
+                intent.putExtra("hashmap",hashMap);
+
+                startActivity(intent);
+
+            }
+        });
+        loadSpinnerData();
 
     }
 
@@ -114,6 +154,58 @@ public class SignUpFirstComp extends AppCompatActivity {
 //        // Adding request to request queue
 //        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
 //    }
+
+    private void loadSpinnerData() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_SPINNER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            //converting the string to json array object
+                            JSONArray array = new JSONArray(response);
+                            for(int i=0;i<array.length();i++) {
+                                JSONObject jsonObject1 = array.getJSONObject(i);
+                                locations.add(jsonObject1.getString("LOCATION"));
+                            }
+
+
+
+                            //traversing through all the object
+//                            for (int i = 0; i < array.length(); i++) {
+//
+//                                //getting product object from json array
+//                                JSONObject product = array.getJSONObject(i);
+//
+//                                //adding the product to product list
+//
+//
+//                                productList.add(new Product(
+//                                        product.getInt("id"),
+//                                        product.getString("title"),
+//                                        product.getString("shortdesc"),
+//                                        product.getDouble("rating"),
+//                                        product.getDouble("price"),
+//                                        product.getString("image")
+//                                ));
+//                            }
+
+                            //creating adapter object and setting it to recyclerview
+                            arrayAdapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        Volley.newRequestQueue(this).add(stringRequest);
+
+    }
 
     private void showDialog() {
         if (!pDialog.isShowing())

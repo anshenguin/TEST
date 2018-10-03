@@ -48,6 +48,7 @@ public class SignUpSecond extends AppCompatActivity {
         field = findViewById(R.id.field);
         percentage = findViewById(R.id.percentage);
         Intent intent = getIntent();
+
         hashMap = (HashMap<String, String>)intent.getSerializableExtra("hashmap");
         if(!hashMap.get("education").equals("12th")){
             textviewcourse.setVisibility(View.VISIBLE);

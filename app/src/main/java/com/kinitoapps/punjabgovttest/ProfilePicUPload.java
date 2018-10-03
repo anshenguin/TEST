@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,9 +36,9 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfilePicUPload extends AppCompatActivity {
-    private CircleImageView profilePic;
+    private ImageView profilePic;
     private final static int GALLERY_REQUEST=1;
-    private Button btn,skpbtn;
+    private Button btn,skpbtn,upld;
     private SessionManager session;
     private SQLiteHandler db;
     Bitmap bitmap;
@@ -56,6 +57,7 @@ public class ProfilePicUPload extends AppCompatActivity {
         db = new SQLiteHandler(getApplicationContext());
         profilePic=findViewById(R.id.profile_pic);
         btn=findViewById(R.id.nextbtn);
+        upld = findViewById(R.id.upld);
         skpbtn=findViewById(R.id.skpbtn);
         skpbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +65,7 @@ public class ProfilePicUPload extends AppCompatActivity {
                 startActivity(new Intent(ProfilePicUPload.this,JobsActivity.class));
             }
         });
-        profilePic.setOnClickListener(new View.OnClickListener() {
+        upld.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent gallery=new Intent(Intent.ACTION_GET_CONTENT);
