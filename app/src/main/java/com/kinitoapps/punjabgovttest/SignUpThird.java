@@ -85,7 +85,7 @@ public class SignUpThird extends AppCompatActivity {
 //                        session.setLogin(true);
 //
 //                        // Now store the user in SQLite
-//
+
 //                        JSONObject user = jObj.getJSONObject("user");
 //                        String name = user.getString("name");
 //                        String email = user.getString("email");
@@ -193,7 +193,6 @@ public class SignUpThird extends AppCompatActivity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(SignUpThird.this, "error aagya", Toast.LENGTH_SHORT).show();
                 }
 
             }

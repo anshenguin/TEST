@@ -32,8 +32,11 @@
         </activity>
         <activity android:name=".SignUpFirstComp" />
         <activity android:name=".LoginActivityCompany" />
-        <activity android:name=".SignUpSecondComp"/>
-        <activity android:name=".ProfilePicUPload"/>
+        <activity android:name=".SignUpSecondComp" />
+        <activity android:name=".ProfilePicUPload" />
+        <activity android:name=".CompanyDashboardActivity" />
+        <activity android:name=".AddJobActivity" />
+        <activity android:name=".AddJobSecondActivity"></activity>
     </application>
 
 </manifest>

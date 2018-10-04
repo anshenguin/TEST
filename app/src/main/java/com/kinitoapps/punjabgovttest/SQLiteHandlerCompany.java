@@ -34,6 +34,7 @@ public class SQLiteHandlerCompany extends SQLiteOpenHelper {
     private static final String KEY_PHONE_SEC = "phonesec";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_ADDRESS = "address";
+    private static final String KEY_CITY = "city";
 
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
@@ -49,6 +50,7 @@ public class SQLiteHandlerCompany extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
                 + KEY_EMAIL + " TEXT UNIQUE,"+
                 KEY_ADDRESS + " TEXT,"+
+                KEY_CITY + " TEXT,"+
                 KEY_PHONE + " TEXT,"+
                 KEY_PHONE_SEC + " TEXT"
                 + ")";
@@ -70,14 +72,15 @@ public class SQLiteHandlerCompany extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String email, String phone, String phonesec, String address) {
+    public void addUser(String name, String email, String phone, String phonesec, String address, String city) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name); // Name
         values.put(KEY_EMAIL, email);
         values.put(KEY_ADDRESS, address); // Name
-            values.put(KEY_PHONE, phone);
+        values.put(KEY_CITY, city); // Name
+        values.put(KEY_PHONE, phone);
         values.put(KEY_PHONE_SEC, phonesec);// Email
 
         // Inserting Row
@@ -102,8 +105,9 @@ public class SQLiteHandlerCompany extends SQLiteOpenHelper {
             user.put("name", cursor.getString(1));
             user.put("email", cursor.getString(2));
             user.put("address", cursor.getString(3));
-            user.put("phone", cursor.getString(4));
-            user.put("phonesec", cursor.getString(5));
+            user.put("city", cursor.getString(4));
+            user.put("phone", cursor.getString(5));
+            user.put("phonesec", cursor.getString(6));
         }
         cursor.close();
         db.close();

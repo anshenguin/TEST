@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kinitoapps.punjabgovttest.AddJobActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/textv"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"
+        android:textSize="20sp"
+        android:text="ADD A NEW JOB"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/job"
+        android:maxLines="1"
+        android:padding="12dp"
+        android:hint="Job Name"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_corners"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/job"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/inf"
+        android:maxLines="1"
+        android:padding="12dp"
+        android:hint="Job Info"
+        android:maxHeight="32sp"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_corners"
+        />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/inf"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/emailet"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:hint="Email Address"
+            android:maxHeight="32sp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_corners"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/emailet"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/phoneone"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:hint="Phone Number"
+            android:maxHeight="32sp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_corners"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/phoneone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/phonetwo"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:hint="2nd Phone Number"
+            android:maxHeight="32sp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_corners"
+            />
+
+
+        
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/phonetwo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/add"
+        android:maxLines="1"
+        android:padding="12dp"
+        android:hint="Address"
+        android:maxHeight="32sp"
+        android:layout_margin="16dp"
+        android:background="@drawable/rounded_corners"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:id="@+id/citytext"
+        app:layout_constraintTop_toBottomOf="@id/add"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="16sp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/citytext"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/cityspinner"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="16dp"
+        android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qualification"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="20dp"
+            android:id="@+id/qualificationtext"
+            app:layout_constraintTop_toBottomOf="@id/cityspinner"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="16sp"/>
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/qualificationtext"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/qualspinner"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="16dp"
+            android:layout_height="wrap_content"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:id="@+id/radiogroup"
+            android:layout_margin="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@id/qualspinner"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:layout_width="0dp"
+                android:text="Part Time"
+                android:layout_weight="1"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:padding="8dp"
+                android:background="@drawable/radio_bg"
+                android:textColor="#424242"
+
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:layout_width="0dp"
+                android:background="@drawable/radio_bg"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textColor="#424242"
+                android:button="@android:color/transparent"
+                android:text="Full Time"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="NEXT >"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radiogroup" />
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

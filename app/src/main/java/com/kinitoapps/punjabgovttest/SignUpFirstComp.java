@@ -28,7 +28,6 @@ import java.util.Map;
 
 public class SignUpFirstComp extends AppCompatActivity {
 
-    public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/register.php";
     String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinner.php";
     ArrayAdapter<String> arrayAdapter;
     private ProgressDialog pDialog;
@@ -41,7 +40,9 @@ public class SignUpFirstComp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        reg = findViewById(R.id.reg);
+        setContentView(R.layout.activity_sign_up_first_comp);
+
+        reg = findViewById(R.id.registercompanynext);
         hashMap = new HashMap<>();
         locations = new ArrayList<>();
         final EditText fullnameedittext = findViewById(R.id.fullnameedittext);
@@ -49,10 +50,10 @@ public class SignUpFirstComp extends AppCompatActivity {
         final EditText optionalphonenumber = findViewById(R.id.optionalphonenumberedittext);
         final EditText addressedittext = findViewById(R.id.addressedittext);
         arrayAdapter = new ArrayAdapter<String>(SignUpFirstComp.this, android.R.layout.simple_spinner_dropdown_item, locations);
-        setContentView(R.layout.activity_sign_up_first_comp);
         city = findViewById(R.id.city);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
+        city.setAdapter(arrayAdapter);
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -207,13 +208,5 @@ public class SignUpFirstComp extends AppCompatActivity {
 
     }
 
-    private void showDialog() {
-        if (!pDialog.isShowing())
-            pDialog.show();
-    }
 
-    private void hideDialog() {
-        if (pDialog.isShowing())
-            pDialog.dismiss();
-    }
 }
