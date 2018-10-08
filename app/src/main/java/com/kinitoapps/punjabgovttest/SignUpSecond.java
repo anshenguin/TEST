@@ -58,6 +58,7 @@ public class SignUpSecond extends AppCompatActivity {
             if(hashMap.get("education").equals("Under Graduate"))
                 cat = "0";
             else
+
                 cat = "1";
 
         }

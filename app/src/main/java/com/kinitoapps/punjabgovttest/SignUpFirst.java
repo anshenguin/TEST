@@ -27,8 +27,7 @@ public class SignUpFirst extends AppCompatActivity {
 
     String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinner.php";
     String URL_SPINNER2 = "https://governmentappcom.000webhostapp.com/spinneredu.php";
-    String text;
-    TextView tv;
+
     Spinner spinnerLocation,spinnerEducation;
     HashMap<String,String> hashMap;
     ArrayAdapter<String> arrayAdapter,arrayAdapter2;

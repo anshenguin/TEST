@@ -35,7 +35,7 @@ public class SQLiteHandlerCompany extends SQLiteOpenHelper {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_ADDRESS = "address";
     private static final String KEY_CITY = "city";
-
+    private static final String KEY_C_ID = "cid";
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
 
@@ -48,6 +48,7 @@ public class SQLiteHandlerCompany extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
+                + KEY_C_ID + " INTEGER,"
                 + KEY_EMAIL + " TEXT UNIQUE,"+
                 KEY_ADDRESS + " TEXT,"+
                 KEY_CITY + " TEXT,"+
@@ -72,17 +73,17 @@ public class SQLiteHandlerCompany extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String email, String phone, String phonesec, String address, String city) {
+    public void addUser(String name, String CID, String email, String phone, String phonesec, String address, String city) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name); // Name
+        values.put(KEY_C_ID, CID);
         values.put(KEY_EMAIL, email);
         values.put(KEY_ADDRESS, address); // Name
         values.put(KEY_CITY, city); // Name
         values.put(KEY_PHONE, phone);
         values.put(KEY_PHONE_SEC, phonesec);// Email
-
         // Inserting Row
         long id = db.insert(TABLE_USER, null, values);
         db.close(); // Closing database connection
@@ -103,11 +104,12 @@ public class SQLiteHandlerCompany extends SQLiteOpenHelper {
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
             user.put("name", cursor.getString(1));
-            user.put("email", cursor.getString(2));
-            user.put("address", cursor.getString(3));
-            user.put("city", cursor.getString(4));
-            user.put("phone", cursor.getString(5));
-            user.put("phonesec", cursor.getString(6));
+            user.put("cid", cursor.getString(2));
+            user.put("email", cursor.getString(3));
+            user.put("address", cursor.getString(4));
+            user.put("city", cursor.getString(5));
+            user.put("phone", cursor.getString(6));
+            user.put("phonesec", cursor.getString(7));
         }
         cursor.close();
         db.close();

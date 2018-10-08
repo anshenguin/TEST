@@ -8,11 +8,25 @@ import android.widget.Button;
 
 public class LoginActivityCompany extends AppCompatActivity {
 
+    SQLiteHandlerCompany db;
+    SessionManager session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_company);
         Button button = findViewById(R.id.btnLinkToRegisterScreen);
+        db = new SQLiteHandlerCompany(getApplicationContext());
+
+        // Session manager
+        session = new SessionManager(getApplicationContext());
+
+        // Check if user is already logged in or not
+        if (session.isLoggedIn()) {
+            // User is already logged in. Take him to main activity
+            Intent intent = new Intent(LoginActivityCompany.this, AddJobActivity.class);
+            startActivity(intent);
+            finish();
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

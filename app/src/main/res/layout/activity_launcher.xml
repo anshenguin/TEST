@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9F9F9"
     tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
 
 
     <ImageView
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_bannerdone"
-        android:background="#192940"
-
+        android:src="@drawable/ic_ghar_ghar_rozgar"
+        android:layout_margin="8dp"
+        android:scaleType="fitCenter"
         android:id="@+id/banner"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#5CAAEA"
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/banner"
@@ -38,7 +38,7 @@
             android:layout_marginTop="4dp"
             android:gravity="center"
             android:text="Sign In"
-            android:textColor="#000"
+            android:textColor="#4E4E4E"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -55,7 +55,7 @@
                 android:layout_marginEnd="4dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:background="#AB55E5 ">
+                android:background="#FF921B ">
 
                 <ImageView
                     android:id="@+id/icon_1"
@@ -73,7 +73,7 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:text="Recruiters"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -85,7 +85,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="#6A71ED">
+                android:background="#00AFF0">
 
                 <ImageView
                     android:id="@+id/icon_2"
@@ -102,7 +102,7 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:text="Job Seekers"
-                    android:textColor="#000"
+                    android:textColor="#FFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </RelativeLayout>

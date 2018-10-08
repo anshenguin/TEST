@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#AB55E5"
+    android:background="#FF921B"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
@@ -53,7 +53,7 @@
             android:layout_marginTop="20dip"
             android:background="@color/btn_login_bg"
             android:text="Sign In"
-            android:textColor="#AB55E5" />
+            android:textColor="#FF921B" />
 
         <!-- Link to Login Screen -->
 

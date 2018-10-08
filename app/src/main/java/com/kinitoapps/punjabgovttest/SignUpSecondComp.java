@@ -30,12 +30,14 @@ public class SignUpSecondComp extends AppCompatActivity {
     public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/signupcompany.php";
 
 
-    EditText email,password,confirmpassword;
+    EditText email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_second_comp);
         Intent intent = getIntent();
+        db = new SQLiteHandlerCompany(getApplicationContext());
+        session = new SessionManager(getApplication());
         final EditText email = findViewById(R.id.emailedittext);
         final EditText password = findViewById(R.id.passwordedittext);
         final EditText confirmpassword = findViewById(R.id.confirmpassword);
@@ -88,8 +90,9 @@ public class SignUpSecondComp extends AppCompatActivity {
                         String email = user.getString("email");
                         String city= user.getString("city");
                         String address = user.getString("address");
+                        String CID = user.getString("cid");
                         // Inserting row in users table
-                        db.addUser(name, email, phone, phonesec, address, city);
+                        db.addUser(name, CID ,email, phone, phonesec, address, city);
                         session.setLogin(true);
                         Log.d("LOGGINGME1", String.valueOf(db));
                         Toast.makeText(SignUpSecondComp.this, "DONE", Toast.LENGTH_SHORT).show();
