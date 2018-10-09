@@ -22,7 +22,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
-    private static final String DATABASE_NAME = "android_api";
+    private static final String DATABASE_NAME = "ggr.db";
 
     // Login table name
     private static final String TABLE_USER = "user";
@@ -35,7 +35,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_PHONE = "phone";
     private static final String KEY_PERCENTAGE = "percentage";
     private static final String KEY_EMAIL="email";
-
+    private static final String TABLE_COMPANY = "company";
+    private static final String KEY_ADDRESS = "address";
+    private static final String KEY_CITY = "city";
+    private static final String KEY_C_ID = "cid";
+    private static final String KEY_PHONE_SEC = "phonesec";
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
 
@@ -47,14 +51,24 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_EMAIL + " TEXT UNIQUE,"+
-                 KEY_PHONE + " TEXT UNIQUE,"+
-                KEY_PERCENTAGE + " TEXT,"+
-                KEY_COURSE + " TEXT,"+
+                + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_NAME + " TEXT, "
+                + KEY_EMAIL + " TEXT UNIQUE, "+
+                 KEY_PHONE + " TEXT UNIQUE, "+
+                KEY_PERCENTAGE + " TEXT, "+
+                KEY_COURSE + " TEXT, "+
                 KEY_FIELD + " TEXT"
                 + ")";
+        String CREATE_LOGIN_TABLE_COMPANY = "CREATE TABLE " + TABLE_COMPANY + "("
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
+                + KEY_C_ID + " INTEGER,"
+                + KEY_EMAIL + " TEXT UNIQUE,"+
+                KEY_ADDRESS + " TEXT,"+
+                KEY_CITY + " TEXT,"+
+                KEY_PHONE + " TEXT,"+
+                KEY_PHONE_SEC + " TEXT"
+                + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
+        db.execSQL(CREATE_LOGIN_TABLE_COMPANY);
 
         Log.d(TAG, "Database tables created");
     }
@@ -64,7 +78,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMPANY);
         // Create tables again
         onCreate(db);
     }
@@ -88,6 +102,48 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
 
         Log.d(TAG, "New user inserted into sqlite: " + id);
+    }
+
+    public void addCompany(String name, String CID, String email, String phone, String phonesec, String address, String city) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, name); // Name
+        values.put(KEY_C_ID, CID);
+        values.put(KEY_EMAIL, email);
+        values.put(KEY_ADDRESS, address); // Name
+        values.put(KEY_CITY, city); // Name
+        values.put(KEY_PHONE, phone);
+        values.put(KEY_PHONE_SEC, phonesec);// Email
+        // Inserting Row
+        long id = db.insert(TABLE_COMPANY, null, values);
+        db.close(); // Closing database connection
+
+        Log.d(TAG, "New user inserted into sqlite: " + id);
+    }
+    public HashMap<String, String> getCompanyDetails() {
+        HashMap<String, String> user = new HashMap<String, String>();
+        String selectQuery = "SELECT  * FROM " + TABLE_COMPANY;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // Move to first row
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0) {
+            user.put("name", cursor.getString(1));
+            user.put("cid", cursor.getString(2));
+            user.put("email", cursor.getString(3));
+            user.put("address", cursor.getString(4));
+            user.put("city", cursor.getString(5));
+            user.put("phone", cursor.getString(6));
+            user.put("phonesec", cursor.getString(7));
+        }
+        cursor.close();
+        db.close();
+        // return user
+        Log.d(TAG, "Fetching user from Sqlite: " + user.toString());
+
+        return user;
     }
 
     /**
@@ -126,6 +182,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.delete(TABLE_USER, null, null);
         db.close();
 
+
+        Log.d(TAG, "Deleted all user info from sqlite");
+    }
+
+    public void deleteCompany() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Delete All Rows
+        db.delete(TABLE_COMPANY, null, null);
+        db.close();
         Log.d(TAG, "Deleted all user info from sqlite");
     }
 

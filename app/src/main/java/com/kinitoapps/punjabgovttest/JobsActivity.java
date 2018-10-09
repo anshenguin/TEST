@@ -43,17 +43,9 @@ public class JobsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jobs);
         db = new SQLiteHandler(getApplicationContext());
-        Button logout = findViewById(R.id.logout);
         TextView tv = findViewById(R.id.welcome);
         session = new SessionManager(getApplicationContext());
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logoutUser();
-
-            }
-        });
         hashMap = new HashMap<>();
         hashMap.put("course",db.getUserDetails().get("course"));
         hashMap.put("field",db.getUserDetails().get("field"));

@@ -35,11 +35,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        inputEmail =  findViewById(R.id.email);
-        inputPassword =  findViewById(R.id.password);
+
         btnLogin =  findViewById(R.id.btnLogin);
         btnLinkToRegister =  findViewById(R.id.btnLinkToRegisterScreen);
-
+        inputEmail =  findViewById(R.id.email);
+        inputPassword =  findViewById(R.id.password);
         // Progress dialog
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -119,9 +119,8 @@ public class LoginActivity extends AppCompatActivity {
                         // user successfully logged in
                         // Create login session
                         session.setLogin(true);
-
+                        session.setKeyIsCompany(false);
                         // Now store the user in SQLite
-
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
                         String phone = user.getString("phone");
@@ -131,11 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                         String email = user.getString("email");
                         // Inserting row in users table
                         db.addUser(name, phone, course, field, percentage,email);
-
                         // Launch main activity
-                        Intent intent = new Intent(LoginActivity.this,
-                                JobsActivity.class);
-                        startActivity(intent);
                         finish();
                     } else {
                         // Error in login. Get the error message
@@ -146,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     // JSON error
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Wrong login credentials, please try again", Toast.LENGTH_LONG).show();
                 }
 
             }

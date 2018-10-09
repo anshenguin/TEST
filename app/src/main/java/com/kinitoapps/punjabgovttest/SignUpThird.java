@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,6 +26,7 @@ public class SignUpThird extends AppCompatActivity {
     TextInputEditText email,password,confpassword;
     HashMap<String,String> hashMap;
     SessionManager session;
+
     public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/register.php";
     SQLiteHandler db;
     private ProgressDialog pDialog;
@@ -42,10 +44,10 @@ public class SignUpThird extends AppCompatActivity {
         db = new SQLiteHandler(getApplicationContext());
         Intent intent = getIntent();
         hashMap = (HashMap<String, String>)intent.getSerializableExtra("hashmap");
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
+
         confpassword = findViewById(R.id.confpassword);
         Button reg = findViewById(R.id.reg);
+
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,9 +176,11 @@ public class SignUpThird extends AppCompatActivity {
                         // Inserting row in users table
                         db.addUser(name, phone, course, field, percentage,email );
                         session.setLogin(true);
+                        session.setKeyIsCompany(false);
                         Log.d("LOGGINGME1", String.valueOf(db));
-                        Intent intent1 = new Intent(SignUpThird.this,ProfilePicUPload.class);
-                        startActivity(intent1);
+                        Intent intent = new Intent(SignUpThird.this,LauncherActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
 
 
 

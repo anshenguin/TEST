@@ -30,7 +30,7 @@ public class CalendarActivity extends AppCompatActivity {
         final TextView monthname = findViewById(R.id.month);
         final Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(1539282600000L);
-        monthname.setText(returnMonth(calendar.get(Calendar.MONTH)));
+        monthname.setText(returnMonth(calendar.get(Calendar.MONTH))+" - "+calendar.get(Calendar.YEAR));
         compactCalendarView.setFirstDayOfWeek(Calendar.MONDAY);
         Event ev1 = new Event(Color.BLUE,1539282600000L);
         compactCalendarView.addEvent(ev1);
@@ -46,7 +46,7 @@ public class CalendarActivity extends AppCompatActivity {
             public void onMonthScroll(Date firstDayOfNewMonth) {
 
                 calendar.setTimeInMillis(firstDayOfNewMonth.getTime());
-                monthname.setText(returnMonth(calendar.get(Calendar.MONTH)));
+                monthname.setText(returnMonth(calendar.get(Calendar.MONTH))+" - "+calendar.get(Calendar.YEAR));
 
 
             }

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
-            android:hint="Phone Number"
+            android:hint="Email Address"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:singleLine="true"
@@ -47,7 +47,7 @@
         <!-- Login Button -->
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnCompLogin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"

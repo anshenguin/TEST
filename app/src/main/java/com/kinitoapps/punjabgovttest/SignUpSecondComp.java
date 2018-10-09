@@ -26,7 +26,7 @@ public class SignUpSecondComp extends AppCompatActivity {
     HashMap<String, String> hashMap;
     private ProgressDialog pDialog;
     SessionManager session;
-    SQLiteHandlerCompany db;
+    SQLiteHandler db;
     public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/signupcompany.php";
 
 
@@ -36,7 +36,7 @@ public class SignUpSecondComp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_second_comp);
         Intent intent = getIntent();
-        db = new SQLiteHandlerCompany(getApplicationContext());
+        db = new SQLiteHandler(getApplicationContext());
         session = new SessionManager(getApplication());
         final EditText email = findViewById(R.id.emailedittext);
         final EditText password = findViewById(R.id.passwordedittext);
@@ -92,10 +92,14 @@ public class SignUpSecondComp extends AppCompatActivity {
                         String address = user.getString("address");
                         String CID = user.getString("cid");
                         // Inserting row in users table
-                        db.addUser(name, CID ,email, phone, phonesec, address, city);
+                        db.addCompany(name, CID ,email, phone, phonesec, address, city);
                         session.setLogin(true);
+                        session.setKeyIsCompany(true);
                         Log.d("LOGGINGME1", String.valueOf(db));
                         Toast.makeText(SignUpSecondComp.this, "DONE", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignUpSecondComp.this,LauncherActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
 //                        Intent intent1 = new Intent(SignUpSecondComp.this,ProfilePicUPload.class);
 //                        startActivity(intent1);
 

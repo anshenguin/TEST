@@ -31,14 +31,14 @@ public class AddJobSecondActivity extends AppCompatActivity {
 
     private ProgressDialog pDialog;
 
-    SQLiteHandlerCompany db;
+    SQLiteHandler db;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job_second);
-        db = new SQLiteHandlerCompany(this);
+        db = new SQLiteHandler(this);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         final Spinner coursespinner = findViewById(R.id.coursespinner);
@@ -76,7 +76,7 @@ public class AddJobSecondActivity extends AppCompatActivity {
                 if(!hashMap.get("qual").equals("12th")) {
                     hashMap.put("course", coursespinner.getSelectedItem().toString());
                     hashMap.put("field", fieldspinner.getSelectedItem().toString());
-                    hashMap.put("companyID",db.getUserDetails().get("cid"));
+                    hashMap.put("companyID",db.getCompanyDetails().get("cid"));
 
                 }
                 else{

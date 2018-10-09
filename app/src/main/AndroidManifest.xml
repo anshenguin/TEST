@@ -24,14 +24,11 @@
         <activity
             android:name=".LauncherActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity android:name=".SignUpFirstComp" />
         <activity
@@ -42,7 +39,9 @@
         <activity android:name=".CompanyDashboardActivity" />
         <activity android:name=".AddJobActivity" />
         <activity android:name=".AddJobSecondActivity" />
-        <activity android:name=".CalendarActivity"/>
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".ChangePasswordActivity"></activity>
     </application>
 
 </manifest>
