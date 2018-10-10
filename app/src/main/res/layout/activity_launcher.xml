@@ -117,6 +117,7 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:id="@+id/seeker_options"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/lin"
             android:layout_height="wrap_content">
 
@@ -375,7 +376,6 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:id="@+id/employer_options"
-            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/lin"
             android:layout_height="wrap_content">
             <TextView

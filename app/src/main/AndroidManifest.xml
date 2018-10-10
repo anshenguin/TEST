@@ -42,7 +42,8 @@
         <activity android:name=".CalendarActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".ChangePasswordActivity" />
-        <activity android:name=".AppliedJobsActivity"></activity>
+        <activity android:name=".AppliedJobsActivity" />
+        <activity android:name=".CompanyProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kinitoapps.punjabgovttest.CompanyProfileActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="160dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"
+        android:layout_height="160dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:textSize="16sp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/change_profile_pic"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Change Profile Photo"
+        />
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/change_profile_pic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/rounded_corners"
+        android:padding="12dp"
+        android:id="@+id/company_name_edittext"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        android:hint="Company Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/company_name_edittext"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/rounded_corners"
+        android:padding="12dp"
+        android:id="@+id/phone_number1"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        android:hint="Phone Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        app:layout_constraintTop_toBottomOf="@id/phone_number1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/rounded_corners"
+        android:padding="12dp"
+        android:id="@+id/phone_number2"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        android:hint="Optional Phone Number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textvieweducation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="City"
+        app:layout_constraintTop_toBottomOf="@id/phone_number2" />
+
+    <Spinner
+        android:id="@+id/cityspinnereditcompany"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textvieweducation" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cityspinnereditcompany"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/change_password_company"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Change Password"
+        />
+    <TextView
+        android:id="@+id/emailtv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Email"
+        app:layout_constraintTop_toBottomOf="@id/change_password_company" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="abc@example.com"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="16dp"
+        android:textStyle="bold"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="4dp"
+        android:id="@+id/emaileditcompany"
+        app:layout_constraintTop_toBottomOf="@id/emailtv"/>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
