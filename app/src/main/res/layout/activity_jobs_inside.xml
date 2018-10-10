@@ -278,6 +278,7 @@
             android:background="#6A71ED"
             android:gravity="center"
             android:padding="12dp"
+            android:id="@+id/apply_for_job"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:text="APPLY FOR JOB"

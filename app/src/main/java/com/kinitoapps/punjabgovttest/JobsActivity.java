@@ -62,16 +62,7 @@ public class JobsActivity extends AppCompatActivity {
         jobList();
     }
 
-    private void logoutUser() {
-        session.setLogin(false);
 
-        db.deleteUsers();
-
-        // Launching the login activity
-        Intent intent = new Intent(JobsActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
 //    private void loadSpinnerData() {
 //        Log.d("LOGGINGME", String.valueOf(hashMap));

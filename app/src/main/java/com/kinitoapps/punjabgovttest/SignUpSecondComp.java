@@ -28,8 +28,6 @@ public class SignUpSecondComp extends AppCompatActivity {
     SessionManager session;
     SQLiteHandler db;
     public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/signupcompany.php";
-
-
     EditText email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class SignUpSecondComp extends AppCompatActivity {
         Intent intent = getIntent();
         db = new SQLiteHandler(getApplicationContext());
         session = new SessionManager(getApplication());
-        final EditText email = findViewById(R.id.emailedittext);
+        email = findViewById(R.id.emailedittext);
         final EditText password = findViewById(R.id.passwordedittext);
         final EditText confirmpassword = findViewById(R.id.confirmpassword);
         pDialog = new ProgressDialog(this);

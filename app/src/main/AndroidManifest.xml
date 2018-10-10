@@ -41,7 +41,8 @@
         <activity android:name=".AddJobSecondActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".UserProfileActivity" />
-        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".AppliedJobsActivity"></activity>
     </application>
 
 </manifest>

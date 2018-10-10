@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +22,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class JobsInsideActivity extends AppCompatActivity {
     String URL_JOBS = "https://governmentappcom.000webhostapp.com/job_info.php?id=";
+    String URL_APPLY = "https://governmentappcom.000webhostapp.com/applyForJob.php";
+    SQLiteHandler db;
     String jobID;
-    TextView name, job, info, address, salary, email, phone;
+    TextView name, job, info, address, salary, email, phone, apply;
     ImageView imageViewLogo;
 
     @Override
@@ -33,6 +39,8 @@ public class JobsInsideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_jobs_inside);
         Bundle b;
         b = getIntent().getExtras();
+        db = new SQLiteHandler(getApplicationContext());
+
         jobID = b.getString("jobID");
         name = findViewById(R.id.name);
         email = findViewById(R.id.mail);
@@ -41,13 +49,20 @@ public class JobsInsideActivity extends AppCompatActivity {
         address = findViewById(R.id.add);
         imageViewLogo = findViewById(R.id.logo);
         salary = findViewById(R.id.salary);
+        apply = findViewById(R.id.apply_for_job);
         phone = findViewById(R.id.phone);
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                applyForJob();
+            }
+        });
 
         jobData();
     }
 
     private void jobData() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_JOBS+jobID,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_JOBS + jobID,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -55,7 +70,7 @@ public class JobsInsideActivity extends AppCompatActivity {
                             //converting the string to json array object
                             JSONArray array = new JSONArray(response);
 
-                            for(int i=0;i<array.length();i++) {
+                            for (int i = 0; i < array.length(); i++) {
                                 JSONObject jsonObject1 = array.getJSONObject(i);
                                 name.setText(jsonObject1.getString("org"));
                                 job.setText(jsonObject1.getString("job"));
@@ -90,6 +105,81 @@ public class JobsInsideActivity extends AppCompatActivity {
                     }
                 });
         Volley.newRequestQueue(this).add(stringRequest);
+
+    }
+
+    private void applyForJob() {
+        // Tag used to cancel the request
+        String tag_string_req = "apply_job";
+
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                URL_APPLY, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.d("TAG", "Apply Response: " + response.toString());
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean error = jObj.getBoolean("error");
+                    if (!error) {
+                        // User successfully stored in MySQL
+                        // Now store the user in sqlite
+
+
+//                        JSONObject user = jObj.getJSONObject("user");
+//                        String name = user.getString("name");
+//                        String phone = user.getString("phone");
+//                        String course = user.getString("course");
+//                        String field = user.getString("field");
+//                        String percentage = user.getString("percentage");
+//                        String email = user.getString("email");
+
+                        // Inserting row in users table
+
+
+                        Toast.makeText(getApplicationContext(), "You have successfully registered for the job!", Toast.LENGTH_LONG).show();
+
+                        // Launch login activity
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(getApplicationContext(),
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("TAG", "Registration Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+//                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", db.getUserDetails().get("email"));
+                params.put("job_id",jobID);
+//                params.put("phone", email);
+//                params.put("password", password);
+
+                return params;
+            }
+
+
+        };
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
 
     }
 }
