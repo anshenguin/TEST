@@ -43,7 +43,8 @@
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".AppliedJobsActivity" />
-        <activity android:name=".CompanyProfileActivity"></activity>
+        <activity android:name=".CompanyProfileActivity" />
+        <activity android:name=".ChangePasswordCompanyActivity"></activity>
     </application>
 
 </manifest>

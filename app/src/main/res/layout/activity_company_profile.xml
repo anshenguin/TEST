@@ -76,6 +76,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+        <EditText
+            app:layout_constraintTop_toBottomOf="@id/phone_number2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/rounded_corners"
+            android:padding="12dp"
+            android:id="@+id/addresseditcompany"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:layout_margin="16dp"
+            android:textSize="16sp"
+            android:hint="Address"
+            android:maxHeight="36sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/textvieweducation"
         android:layout_width="match_parent"
@@ -84,7 +100,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:text="City"
-        app:layout_constraintTop_toBottomOf="@id/phone_number2" />
+        app:layout_constraintTop_toBottomOf="@id/addresseditcompany" />
 
     <Spinner
         android:id="@+id/cityspinnereditcompany"
@@ -131,5 +147,16 @@
         android:layout_marginTop="4dp"
         android:id="@+id/emaileditcompany"
         app:layout_constraintTop_toBottomOf="@id/emailtv"/>
+        <Button
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/emaileditcompany"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/save_changes_company"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:text="Save Changes"/>
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
