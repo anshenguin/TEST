@@ -18,4 +18,8 @@
         <item name="cardViewStyle">@style/CardView</item>
     </style>
 
+    <style name="AppTheme.SplashTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

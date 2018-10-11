@@ -1,6 +1,7 @@
 package com.kinitoapps.punjabgovttest;
 
 import android.content.Intent;
+import android.preference.MultiSelectListPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -22,30 +24,41 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class SignUpSecond extends AppCompatActivity {
+public class SignUpSecond extends AppCompatActivity implements MultiSelectionSpinner.OnMultipleItemsSelectedListener{
     TextView textviewcourse,textviewfield;
     Spinner course,field;
-    ArrayAdapter<String> arrayAdapter,arrayAdapter2;
-    ArrayList<String> fieldArray, courseArray;
+    ArrayAdapter<String> arrayAdapter,arrayAdapter2,arrayAdapter3;
+    ArrayList<String> fieldArray, courseArray, skills;
     HashMap<String, String> hashMap;
     TextView percentage;
     String cat,cat2;
+    Button addskills;
+    ArrayList<String> finalselected;
     String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinnerfield.php?cat=";
     String URL_SPINNER2 = "https://governmentappcom.000webhostapp.com/spinnercourse.php?cat=";
+    String URL_SPINNER3 = "https://governmentappcom.000webhostapp.com/spinnerskills.php";
 
 
+    MultiSelectionSpinner skillspinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_second);
         fieldArray = new ArrayList<>();
+        finalselected = new ArrayList<>();
         courseArray = new ArrayList<>();
+        skills = new ArrayList<>();
+        addskills = findViewById(R.id.addskills);
+
         textviewfield = findViewById(R.id.textviewfield);
         textviewcourse = findViewById(R.id.textviewcourse);
         course = findViewById(R.id.course);
         field = findViewById(R.id.field);
+        skillspinner = findViewById(R.id.skillspinner);
+        skillspinner.setVisibility(View.GONE);
         percentage = findViewById(R.id.percentage);
         Intent intent = getIntent();
 
@@ -73,6 +86,7 @@ public class SignUpSecond extends AppCompatActivity {
         course.setAdapter(arrayAdapter2);
         field.setAdapter(arrayAdapter);
         loadSpinner2Data(cat);
+        loadSpinner3Data();
         course.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -100,11 +114,43 @@ public class SignUpSecond extends AppCompatActivity {
                     hashMap.put("course", "0");
                     hashMap.put("field", "0");
                 }
+                if(finalselected.isEmpty()){
+                    hashMap.put("skills", "");
+                }
+                else{
+                    String skills = finalselected.toString().replace("[","").replace("]","");
+                    hashMap.put("skills",skills);
+                }
                 intent.putExtra("hashmap",hashMap);
                 startActivity(intent);
 
             }
         });
+
+        addskills.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addskills.setVisibility(View.GONE);
+                skillspinner.setVisibility(View.VISIBLE);
+                skillspinner.setItems(skills);
+                skillspinner.setListener(SignUpSecond.this);
+                String[] selection = {};
+                skillspinner.setSelection(selection);
+                skillspinner.performClick();
+
+            }
+        });
+
+
+
+
+//        skillspinner.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                skillspinner.setItems(skills);
+////                skillspinner.setSelection(lastselected);
+//            }
+//        });
     }
 
     private void loadSpinnerData(String cat2) {
@@ -208,4 +254,75 @@ public class SignUpSecond extends AppCompatActivity {
                 });
         Volley.newRequestQueue(this).add(stringRequest);
     }
+    private void loadSpinner3Data() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_SPINNER3,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            //converting the string to json array object
+                            JSONArray array = new JSONArray(response);
+                            for(int i=0;i<array.length();i++) {
+                                JSONObject jsonObject1 = array.getJSONObject(i);
+                                skills.add(jsonObject1.getString("SKILL"));
+                            }
+
+
+
+
+
+
+                            //traversing through all the object
+//                            for (int i = 0; i < array.length(); i++) {
+//
+//                                //getting product object from json array
+//                                JSONObject product = array.getJSONObject(i);
+//
+//                                //adding the product to product list
+//
+//
+//                                productList.add(new Product(
+//                                        product.getInt("id"),
+//                                        product.getString("title"),
+//                                        product.getString("shortdesc"),
+//                                        product.getDouble("rating"),
+//                                        product.getDouble("price"),
+//                                        product.getString("image")
+//                                ));
+//                            }
+
+                            //creating adapter object and setting it to recyclerview
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    @Override
+    public void selectedIndices(List<Integer> indices) {
+
+
+    }
+
+    @Override
+    public void selectedStrings(List<String> strings) {
+        if(strings.isEmpty())
+        {
+            skillspinner.setVisibility(View.GONE);
+            addskills.setVisibility(View.VISIBLE);
+        }
+
+        finalselected.clear();
+        finalselected.addAll(strings);
+    }
+
 }

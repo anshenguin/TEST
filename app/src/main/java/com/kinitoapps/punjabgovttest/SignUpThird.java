@@ -44,7 +44,8 @@ public class SignUpThird extends AppCompatActivity {
         db = new SQLiteHandler(getApplicationContext());
         Intent intent = getIntent();
         hashMap = (HashMap<String, String>)intent.getSerializableExtra("hashmap");
-
+        password = findViewById(R.id.password);
+        email = findViewById(R.id.email);
         confpassword = findViewById(R.id.confpassword);
         Button reg = findViewById(R.id.reg);
 

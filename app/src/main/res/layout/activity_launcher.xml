@@ -35,6 +35,17 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
             android:paddingBottom="8dp">
 
             <TextView
+                android:id="@+id/welcometext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#444"
+                android:text="Welcome to Ghar Ghar Rozgar"
+                android:textSize="22sp"
+                android:layout_margin="8dp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -42,7 +53,7 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
                 android:gravity="center"
                 android:text="Sign In"
                 android:textColor="#4E4E4E"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -113,6 +124,27 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
             </LinearLayout>
 
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:id="@+id/total_number"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:text="Total Number of Jobs: 60"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:layout_height="wrap_content"
+                android:text="In association with DAV Institute of Engineering and Technology, Jalandhar"/>
         </LinearLayout>
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -376,6 +408,7 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:id="@+id/employer_options"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/lin"
             android:layout_height="wrap_content">
             <TextView
@@ -387,6 +420,7 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
                 android:gravity="center"
                 android:layout_margin="12dp"
                 android:textStyle="bold"
+
                 android:layout_height="wrap_content"
                 android:text="NOTE: We recommend the use of Official Ghar Ghar Rozgar website for company profiles."/>
             <TextView

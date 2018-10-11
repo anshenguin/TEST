@@ -24,11 +24,7 @@
         <activity
             android:name=".LauncherActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SignUpFirstComp" />
         <activity
@@ -44,7 +40,15 @@
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".AppliedJobsActivity" />
         <activity android:name=".CompanyProfileActivity" />
-        <activity android:name=".ChangePasswordCompanyActivity"></activity>
+        <activity android:name=".ChangePasswordCompanyActivity" />
+        <activity android:name=".SplashScreenActivity" android:theme="@style/AppTheme.SplashTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

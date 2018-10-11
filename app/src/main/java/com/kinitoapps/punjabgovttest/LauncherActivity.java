@@ -11,14 +11,26 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class LauncherActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
     ConstraintLayout seekeroptions;
     ConstraintLayout employeroptions;
     SQLiteHandler sqLiteHandler;
-    TextView welcome,welcomecompany;
+    TextView welcome,welcomecompany,totaljobs;
     LinearLayout lin;
+    String URL_NUMBER = "https://governmentappcom.000webhostapp.com/jobcount.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +41,7 @@ public class LauncherActivity extends AppCompatActivity {
         employeroptions = findViewById(R.id.employer_options);
         welcome = findViewById(R.id.welcome);
         welcomecompany = findViewById(R.id.welcomecompany);
+        totaljobs = findViewById(R.id.total_number);
         RelativeLayout view_profile = findViewById(R.id.view_profile);
         view_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +163,36 @@ public class LauncherActivity extends AppCompatActivity {
             lin.setVisibility(View.VISIBLE);
             seekeroptions.setVisibility(View.GONE);
             employeroptions.setVisibility(View.GONE);
+            jobCount();
         }
+    }
+    private void jobCount() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_NUMBER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            //converting the string to json array object
+                            JSONArray array = new JSONArray(response);
+                            for(int i=0;i<array.length();i++) {
+                                JSONObject jsonObject1 = array.getJSONObject(i);
+                                totaljobs.setText("Total Number of Jobs: " + jsonObject1.getString("num"));
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+        Volley.newRequestQueue(this).add(stringRequest);
+
     }
 
 }
