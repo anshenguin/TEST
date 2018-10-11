@@ -82,6 +82,7 @@ public class AddJobSecondActivity extends AppCompatActivity {
                 else{
                     hashMap.put("course", "0");
                     hashMap.put("field", "0");
+                    hashMap.put("companyID",db.getCompanyDetails().get("cid"));
                 }
 
                 insertJob();

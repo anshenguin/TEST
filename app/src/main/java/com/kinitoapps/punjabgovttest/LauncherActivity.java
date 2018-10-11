@@ -45,6 +45,14 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
+        RelativeLayout postjob = findViewById(R.id.post_job);
+        postjob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LauncherActivity.this,AddJobActivity.class));
+            }
+        });
+
         RelativeLayout applied_jobs = findViewById(R.id.view_applied_jobs);
         applied_jobs.setOnClickListener(new View.OnClickListener() {
             @Override
