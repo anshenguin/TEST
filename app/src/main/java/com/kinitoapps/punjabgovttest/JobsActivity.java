@@ -118,25 +118,32 @@ public class JobsActivity extends AppCompatActivity {
                 Log.d("TAG", "Login Response: " + response.toString());
 
                 try {
-                        JSONArray array = new JSONArray(response);
-                    for(int i=0;i<array.length();i++) {
-                        JSONObject jsonObject1 = array.getJSONObject(i);
-                        jobsList.add(new Jobs(jsonObject1.getString("job"),jsonObject1.getString("org"),
-                                jsonObject1.getString("logolink"), jsonObject1.getString("id")));
+                    JSONObject jObj = new JSONObject(response);
+                    if(!jObj.getBoolean("error")) {
+                        JSONArray array = jObj.getJSONArray("array");
+
+                        for (int i = 0; i < array.length(); i++) {
+                            JSONObject jsonObject1 = array.getJSONObject(i);
+                            jobsList.add(new Jobs(jsonObject1.getString("job"), jsonObject1.getString("org"),
+                                    jsonObject1.getString("logolink"), jsonObject1.getString("id")));
+                        }
+
+                        jobsAdapter = new JobsAdapter(JobsActivity.this, jobsList);
+                        recyclerView.setAdapter(jobsAdapter);
                     }
+                    else{
+                        String error = jObj.getString("error_msg");
+                        Toast.makeText(JobsActivity.this, error, Toast.LENGTH_SHORT).show();
+                    }
+                    // Inserting row in users table
 
-                    jobsAdapter = new JobsAdapter(JobsActivity.this,jobsList);
-                    recyclerView.setAdapter(jobsAdapter);
 
-                        // Inserting row in users table
-
-
-                        // Launch main activity
+                    // Launch main activity
 
                 } catch (JSONException e) {
                     // JSON error
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
             }

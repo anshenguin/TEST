@@ -134,7 +134,7 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
                 android:id="@+id/total_number"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:text="Total Number of Jobs: 60"/>
+                android:text="Total Number of Jobs:"/>
 
             <TextView
                 android:layout_width="match_parent"
