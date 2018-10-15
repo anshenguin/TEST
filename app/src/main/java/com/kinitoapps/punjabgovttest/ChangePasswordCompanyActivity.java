@@ -3,6 +3,7 @@ package com.kinitoapps.punjabgovttest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,9 @@ public class ChangePasswordCompanyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password_company);
         db = new SQLiteHandler(getApplicationContext());
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Change Password");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         password = findViewById(R.id.currpassword);
         newpassword = findViewById(R.id.newpassword);
         confpassword = findViewById(R.id.confnewpassword);
@@ -138,5 +142,16 @@ public class ChangePasswordCompanyActivity extends AppCompatActivity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

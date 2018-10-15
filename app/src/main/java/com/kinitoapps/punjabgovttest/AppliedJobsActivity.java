@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -36,6 +37,9 @@ public class AppliedJobsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_applied_jobs);
         jobsList = new ArrayList<>();
         db = new SQLiteHandler(getApplicationContext());
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Applied Jobs");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.recyclerViewAppliedJobs);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -113,6 +117,17 @@ public class AppliedJobsActivity extends AppCompatActivity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

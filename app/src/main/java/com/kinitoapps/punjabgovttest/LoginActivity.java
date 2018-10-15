@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         btnLogin =  findViewById(R.id.btnLogin);
         btnLinkToRegister =  findViewById(R.id.btnLinkToRegisterScreen);
         inputEmail =  findViewById(R.id.email);
@@ -128,8 +128,9 @@ public class LoginActivity extends AppCompatActivity {
                         String field = user.getString("field");
                         String percentage = user.getString("percentage");
                         String email = user.getString("email");
+                        String skills = user.getString("skills");
                         // Inserting row in users table
-                        db.addUser(name, phone, course, field, percentage,email);
+                        db.addUser(name, phone, course, field, percentage, email, skills);
                         // Launch main activity
                         finish();
                     } else {
@@ -181,4 +182,5 @@ public class LoginActivity extends AppCompatActivity {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }
+
 }

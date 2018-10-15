@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -42,6 +43,9 @@ public class AddJobActivity extends AppCompatActivity {
         hashMap = new HashMap<>();
         locations = new ArrayList<>();
         education = new ArrayList<>();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Add a New Job");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         final EditText job = findViewById(R.id.jobnamehere);
         final EditText jobinfo = findViewById(R.id.inf);
         final EditText email = findViewById(R.id.emailet);
@@ -214,4 +218,14 @@ public class AddJobActivity extends AppCompatActivity {
 
         }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
+}

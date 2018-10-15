@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -45,11 +46,15 @@ public class JobsActivity extends AppCompatActivity {
         db = new SQLiteHandler(getApplicationContext());
         TextView tv = findViewById(R.id.welcome);
         session = new SessionManager(getApplicationContext());
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Job for You");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         hashMap = new HashMap<>();
         hashMap.put("course",db.getUserDetails().get("course"));
         hashMap.put("field",db.getUserDetails().get("field"));
         hashMap.put("percentage",db.getUserDetails().get("percentage"));
+        hashMap.put("skills", db.getUserDetails().get("skill"));
         tv.setText("Welcome "+db.getUserDetails().get("name"));
 
 
@@ -167,6 +172,17 @@ public class JobsActivity extends AppCompatActivity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

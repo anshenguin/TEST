@@ -217,10 +217,9 @@ public class UserProfileActivity extends AppCompatActivity {
                         String percentage = user.getString("percentage");
                         String course = user.getString("course");
                         String field = user.getString("field");
+                        String skills = user.getString("skill");
                         db.deleteUsers();
-                        db.addUser(name, phone, course, field, percentage,email);
-
-
+                        db.addUser(name, phone, course, field, percentage,email, skills);
                         // Inserting row in users table
                         Log.d("LOGGINGME1", String.valueOf(db));
                         Toast.makeText(UserProfileActivity.this, "Changes Saved!", Toast.LENGTH_SHORT).show();
@@ -276,14 +275,14 @@ public class UserProfileActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                finish();
-                return true;
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch (item.getItemId()) {
+                // Respond to the action bar's Up/Home button
+                case android.R.id.home:
+                    finish();
+                    return true;
+            }
+            return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,7 +41,9 @@ public class JobsInsideActivity extends AppCompatActivity {
         Bundle b;
         b = getIntent().getExtras();
         db = new SQLiteHandler(getApplicationContext());
-
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("About Job");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         jobID = b.getString("jobID");
         name = findViewById(R.id.name);
         email = findViewById(R.id.mail);
@@ -181,5 +184,16 @@ public class JobsInsideActivity extends AppCompatActivity {
         };
         AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

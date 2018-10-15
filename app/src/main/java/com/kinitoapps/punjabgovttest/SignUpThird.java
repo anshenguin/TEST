@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpThird extends AppCompatActivity {
-    TextInputEditText email,password,confpassword;
+    EditText email,password,confpassword;
     HashMap<String,String> hashMap;
     SessionManager session;
 
@@ -36,6 +37,9 @@ public class SignUpThird extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_third);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Candidate Registration");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         session = new SessionManager(getApplicationContext());
@@ -173,9 +177,10 @@ public class SignUpThird extends AppCompatActivity {
                         String field = user.getString("field");
                         String percentage = user.getString("percentage");
                         String email = user.getString("email");
+                        String skills = user.getString("skills");
 
                         // Inserting row in users table
-                        db.addUser(name, phone, course, field, percentage,email );
+                        db.addUser(name, phone, course, field, percentage,email, skills);
                         session.setLogin(true);
                         session.setKeyIsCompany(false);
                         Log.d("LOGGINGME1", String.valueOf(db));
@@ -237,5 +242,15 @@ public class SignUpThird extends AppCompatActivity {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

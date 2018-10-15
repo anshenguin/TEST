@@ -23,7 +23,7 @@
         <activity android:name=".JobsInsideActivity" />
         <activity
             android:name=".LauncherActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity android:name=".SignUpFirstComp" />
@@ -32,7 +32,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SignUpSecondComp" />
         <activity android:name=".ProfilePicUPload" />
-        <activity android:name=".CompanyDashboardActivity" />
         <activity android:name=".AddJobActivity" />
         <activity android:name=".AddJobSecondActivity" />
         <activity android:name=".CalendarActivity" />

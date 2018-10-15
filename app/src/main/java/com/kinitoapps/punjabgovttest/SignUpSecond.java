@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.preference.MultiSelectListPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +34,7 @@ public class SignUpSecond extends AppCompatActivity implements MultiSelectionSpi
     ArrayAdapter<String> arrayAdapter,arrayAdapter2,arrayAdapter3;
     ArrayList<String> fieldArray, courseArray, skills;
     HashMap<String, String> hashMap;
-    TextView percentage;
+    EditText percentage;
     String cat,cat2;
     Button addskills;
     ArrayList<String> finalselected;
@@ -48,6 +50,9 @@ public class SignUpSecond extends AppCompatActivity implements MultiSelectionSpi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_second);
         fieldArray = new ArrayList<>();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Candidate Registration");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         finalselected = new ArrayList<>();
         courseArray = new ArrayList<>();
         skills = new ArrayList<>();
@@ -323,6 +328,17 @@ public class SignUpSecond extends AppCompatActivity implements MultiSelectionSpi
 
         finalselected.clear();
         finalselected.addAll(strings);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

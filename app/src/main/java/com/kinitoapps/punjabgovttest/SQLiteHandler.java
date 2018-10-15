@@ -41,6 +41,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final String KEY_C_ID = "cid";
     private static final String KEY_PHONE_SEC = "phonesec";
     private static final String KEY_UID = "uid";
+    private static final String KEY_SKILL = "skill";
+
     private static final String KEY_CREATED_AT = "created_at";
 
     public SQLiteHandler(Context context) {
@@ -54,6 +56,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_NAME + " TEXT, "
                 + KEY_EMAIL + " TEXT UNIQUE, "+
                  KEY_PHONE + " TEXT UNIQUE, "+
+                KEY_SKILL + " TEXT UNIQUE, "+
                 KEY_PERCENTAGE + " TEXT, "+
                 KEY_COURSE + " TEXT, "+
                 KEY_FIELD + " TEXT"
@@ -86,12 +89,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Storing user details in database
      * */
-    public void addUser(String name, String phone, String course, String field, String percentage,String email) {
+    public void addUser(String name, String phone, String course, String field, String percentage,String email, String skill) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name); // Name
         values.put(KEY_PHONE, phone);
+        values.put(KEY_SKILL, skill);
         values.put(KEY_COURSE, course); // Name
         values.put(KEY_FIELD, field);
         values.put(KEY_PERCENTAGE,percentage);// Email
@@ -161,9 +165,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             user.put("name", cursor.getString(1));
             user.put("email", cursor.getString(2));
             user.put("phone",cursor.getString(3));
-            user.put("percentage", cursor.getString(4));
-            user.put("course", cursor.getString(5));
-            user.put("field", cursor.getString(6));
+            user.put("skill",cursor.getString(4));
+            user.put("percentage", cursor.getString(5));
+            user.put("course", cursor.getString(6));
+            user.put("field", cursor.getString(7));
         }
         cursor.close();
         db.close();

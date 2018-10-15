@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -39,10 +41,13 @@ public class SignUpFirst extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_sign_up_first);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Candidate Registration");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         locations = new ArrayList<>();
         education = new ArrayList<>();
-        final TextInputEditText fullName = findViewById(R.id.fullnameedittext);
-        final TextInputEditText phNo = findViewById(R.id.phonenumberedittext);
+        final EditText fullName = findViewById(R.id.fullnameedittext);
+        final EditText phNo = findViewById(R.id.phonenumberedittext);
         hashMap = new HashMap<>();
         spinnerLocation = findViewById(R.id.location);
         spinnerEducation = findViewById(R.id.education);
@@ -119,6 +124,16 @@ public class SignUpFirst extends AppCompatActivity {
                 });
         Volley.newRequestQueue(this).add(stringRequest);
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadSpinnerData() {

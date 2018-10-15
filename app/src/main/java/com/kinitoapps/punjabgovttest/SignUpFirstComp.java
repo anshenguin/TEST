@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -45,6 +46,9 @@ public class SignUpFirstComp extends AppCompatActivity {
         reg = findViewById(R.id.registercompanynext);
         hashMap = new HashMap<>();
         locations = new ArrayList<>();
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Company Registration");
+        actionBar.setDisplayHomeAsUpEnabled(true);
         final EditText fullnameedittext = findViewById(R.id.fullnameedittext);
         final EditText phonenumber = findViewById(R.id.phonenumberedittext);
         final EditText optionalphonenumber = findViewById(R.id.optionalphonenumberedittext);
@@ -206,6 +210,17 @@ public class SignUpFirstComp extends AppCompatActivity {
                 });
         Volley.newRequestQueue(this).add(stringRequest);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 
