@@ -86,7 +86,7 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="8dp"
                         android:gravity="center"
-                        android:text="Employers"
+                        android:text="Recruiters"
                         android:textColor="#FFF"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -238,7 +238,7 @@ tools:context="com.kinitoapps.punjabgovttest.LauncherActivity">
                         android:textSize="16sp"
                         android:textColor="#FFF"
                         android:textStyle="bold"
-                        android:text="DOs and DONTs in an Interview" />
+                        android:text="Do's and Don'ts in an Interview" />
 
                 </LinearLayout>
 

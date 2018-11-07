@@ -42,8 +42,8 @@ public class ProfilePicUPload extends AppCompatActivity {
     private SessionManager session;
     private SQLiteHandler db;
     Bitmap bitmap;
-    //public static final String UPLOAD_URL = "https://governmentappcom.000webhostapp.com/AndroidUploadImages/uploads.php";
-    private static final String ROOT_URL = "https://governmentappcom.000webhostapp.com/AndroidUploadImages/uploads.php?apicall=";
+    //public static final String UPLOAD_URL = "http://ngo-link.com/android_api/AndroidUploadImages/uploads.php";
+    private static final String ROOT_URL = "http://ngo-link.com/android_api/AndroidUploadImages/uploads.php?apicall=";
     public static final String UPLOAD_URL = ROOT_URL + "uploadpic";
     public static final String GET_PICS_URL = ROOT_URL + "getpics";
     private static final int STORAGE_PERMISSION_CODE = 123;

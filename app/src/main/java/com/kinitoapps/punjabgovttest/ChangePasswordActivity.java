@@ -23,7 +23,7 @@ import java.util.Map;
 public class ChangePasswordActivity extends AppCompatActivity {
     EditText password, newpassword, confpassword;
     SQLiteHandler db;
-    String URL_CHANGE_PASSWORD = "https://governmentappcom.000webhostapp.com/change_password.php";
+    String URL_CHANGE_PASSWORD = "http://ngo-link.com/android_api/change_password.php";
 
 
     @Override

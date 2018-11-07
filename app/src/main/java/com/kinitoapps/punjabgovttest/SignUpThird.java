@@ -28,7 +28,7 @@ public class SignUpThird extends AppCompatActivity {
     HashMap<String,String> hashMap;
     SessionManager session;
 
-    public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/register.php";
+    public static String URL_REGISTER = "http://ngo-link.com/android_api/register.php";
     SQLiteHandler db;
     private ProgressDialog pDialog;
 

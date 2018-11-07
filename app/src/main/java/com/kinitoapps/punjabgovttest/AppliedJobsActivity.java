@@ -26,7 +26,7 @@ public class AppliedJobsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     List<Jobs> jobsList;
-    String URL_JOBS = "https://governmentappcom.000webhostapp.com/applied_job_info.php";
+    String URL_JOBS = "http://ngo-link.com/android_api/applied_job_info.php";
 
     SQLiteHandler db;
     JobsAdapter jobsAdapter;

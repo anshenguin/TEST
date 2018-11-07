@@ -30,8 +30,8 @@ import java.util.HashMap;
 public class AddJobActivity extends AppCompatActivity {
 
     HashMap<String,String> hashMap;
-    String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinner.php";
-    String URL_SPINNER2 = "https://governmentappcom.000webhostapp.com/spinneredu.php";
+    String URL_SPINNER = "http://ngo-link.com/android_api/spinner.php";
+    String URL_SPINNER2 = "http://ngo-link.com/android_api/spinneredu.php";
     ArrayAdapter<String> arrayAdapter,arrayAdapter2;
     ArrayList<String> locations,education;
 

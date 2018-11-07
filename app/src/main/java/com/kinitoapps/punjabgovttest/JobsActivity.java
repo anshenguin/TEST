@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class JobsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    String URL_JOBS = "https://governmentappcom.000webhostapp.com/actual_joblists.php";
+    String URL_JOBS = "http://ngo-link.com/android_api/actual_joblists.php";
     JobsAdapter jobsAdapter;
     HashMap<String,String> hashMap;
     List<Jobs> jobsList;
@@ -54,7 +54,7 @@ public class JobsActivity extends AppCompatActivity {
         hashMap.put("course",db.getUserDetails().get("course"));
         hashMap.put("field",db.getUserDetails().get("field"));
         hashMap.put("percentage",db.getUserDetails().get("percentage"));
-        hashMap.put("skills", db.getUserDetails().get("skill"));
+        hashMap.put("email",db.getUserDetails().get("email"));
         tv.setText("Welcome "+db.getUserDetails().get("name"));
 
 
@@ -184,5 +184,9 @@ public class JobsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 
 }

@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class SignUpFirstComp extends AppCompatActivity {
 
-    String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinner.php";
+    String URL_SPINNER = "http://ngo-link.com/android_api/spinner.php";
     ArrayAdapter<String> arrayAdapter;
     private ProgressDialog pDialog;
     private Spinner city;

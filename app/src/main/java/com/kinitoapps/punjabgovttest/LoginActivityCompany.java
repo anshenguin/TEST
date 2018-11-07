@@ -27,7 +27,7 @@ public class LoginActivityCompany extends AppCompatActivity {
     SQLiteHandler db;
     SessionManager session;
     private ProgressDialog pDialog;
-    public static String URL_COMPANY_LOGIN = "https://governmentappcom.000webhostapp.com/company_login.php";
+    public static String URL_COMPANY_LOGIN = "http://ngo-link.com/android_api/company_login.php";
     private EditText inputEmail;
     String errorMsg;
     private EditText inputPassword;

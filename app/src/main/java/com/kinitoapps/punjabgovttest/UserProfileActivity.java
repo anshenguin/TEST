@@ -30,9 +30,9 @@ import java.util.Map;
 public class UserProfileActivity extends AppCompatActivity {
 
     EditText fullname,phonenumber;
-    String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinner.php";
-    String URL_USER_DETAILS = "https://governmentappcom.000webhostapp.com/getUserDetails.php";
-    String URL_USER_EDIT_PROFILE = "https://governmentappcom.000webhostapp.com/edit_profile.php";
+    String URL_SPINNER = "http://ngo-link.com/android_api/spinner.php";
+    String URL_USER_DETAILS = "http://ngo-link.com/android_api/getUserDetails.php";
+    String URL_USER_EDIT_PROFILE = "http://ngo-link.com/android_api/edit_profile.php";
 
     Button save_changes;
     ArrayAdapter<String> arrayAdapter;

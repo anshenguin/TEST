@@ -28,7 +28,7 @@ public class SignUpSecondComp extends AppCompatActivity {
     private ProgressDialog pDialog;
     SessionManager session;
     SQLiteHandler db;
-    public static String URL_REGISTER = "https://governmentappcom.000webhostapp.com/signupcompany.php";
+    public static String URL_REGISTER = "http://ngo-link.com/android_api/signupcompany.php";
     EditText email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

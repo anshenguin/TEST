@@ -38,9 +38,9 @@ public class SignUpSecond extends AppCompatActivity implements MultiSelectionSpi
     String cat,cat2;
     Button addskills;
     ArrayList<String> finalselected;
-    String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinnerfield.php?cat=";
-    String URL_SPINNER2 = "https://governmentappcom.000webhostapp.com/spinnercourse.php?cat=";
-    String URL_SPINNER3 = "https://governmentappcom.000webhostapp.com/spinnerskills.php";
+    String URL_SPINNER = "http://ngo-link.com/android_api/spinnerfield.php?cat=";
+    String URL_SPINNER2 = "http://ngo-link.com/android_api/spinnercourse.php?cat=";
+    String URL_SPINNER3 = "http://ngo-link.com/android_api/spinnerskills.php";
 
 
     MultiSelectionSpinner skillspinner;
@@ -57,7 +57,6 @@ public class SignUpSecond extends AppCompatActivity implements MultiSelectionSpi
         courseArray = new ArrayList<>();
         skills = new ArrayList<>();
         addskills = findViewById(R.id.addskills);
-
         textviewfield = findViewById(R.id.textviewfield);
         textviewcourse = findViewById(R.id.textviewcourse);
         course = findViewById(R.id.course);
@@ -74,10 +73,10 @@ public class SignUpSecond extends AppCompatActivity implements MultiSelectionSpi
             course.setVisibility(View.VISIBLE);
             field.setVisibility(View.VISIBLE);
             if(hashMap.get("education").equals("Under Graduate"))
-                cat = "0";
+                cat = "Under Graduate";
             else
 
-                cat = "1";
+                cat = "Post Graduate";
 
         }
         else{

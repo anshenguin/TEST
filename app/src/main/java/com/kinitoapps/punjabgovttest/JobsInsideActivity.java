@@ -27,11 +27,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JobsInsideActivity extends AppCompatActivity {
-    String URL_JOBS = "https://governmentappcom.000webhostapp.com/job_info.php?id=";
-    String URL_APPLY = "https://governmentappcom.000webhostapp.com/applyForJob.php";
+    String URL_JOBS = "http://ngo-link.com/android_api/job_info.php?id=";
+    String URL_APPLY = "http://ngo-link.com/android_api/applyForJob.php";
     SQLiteHandler db;
     String jobID;
-    TextView name, job, info, address, salary, email, phone, apply;
+    TextView name, job, info, address, salary, email, phone, apply,emptype, reqs;
     ImageView imageViewLogo;
 
     @Override
@@ -46,7 +46,9 @@ public class JobsInsideActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         jobID = b.getString("jobID");
         name = findViewById(R.id.name);
+        reqs = findViewById(R.id.reqs);
         email = findViewById(R.id.mail);
+        emptype = findViewById(R.id.employmenttype);
         job = findViewById(R.id.job);
         info = findViewById(R.id.info);
         address = findViewById(R.id.add);
@@ -82,6 +84,9 @@ public class JobsInsideActivity extends AppCompatActivity {
                                 address.setText(jsonObject1.getString("address"));
                                 email.setText(jsonObject1.getString("email"));
                                 phone.setText(jsonObject1.getString("phone"));
+                                emptype.setText(jsonObject1.getString("emptype"));
+                                reqs.setText(jsonObject1.getString("course"));
+
                                 Glide.with(JobsInsideActivity.this)
                                         .load(jsonObject1.getString("logolink"))
                                         .apply(new RequestOptions()

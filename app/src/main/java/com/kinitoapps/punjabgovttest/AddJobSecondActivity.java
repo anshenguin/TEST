@@ -28,7 +28,7 @@ import java.util.Map;
 public class AddJobSecondActivity extends AppCompatActivity {
     HashMap<String, String> hashMap;
     String cat,cat2;
-    public static String URL_INSERTJOB = "https://governmentappcom.000webhostapp.com/insertJob.php";
+    public static String URL_INSERTJOB = "http://ngo-link.com/android_api/insertJob.php";
 
     private ProgressDialog pDialog;
 

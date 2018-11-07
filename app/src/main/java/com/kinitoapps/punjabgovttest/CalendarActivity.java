@@ -42,8 +42,8 @@ import java.util.Locale;
 import java.util.Map;
 
 public class CalendarActivity extends AppCompatActivity {
-    String URL_DATES = "https://governmentappcom.000webhostapp.com/userdatelist.php";
-    String URL_CALENDAR_JOBS = "https://governmentappcom.000webhostapp.com/calendar_joblist.php";
+    String URL_DATES = "http://ngo-link.com/android_api/userdatelist.php";
+    String URL_CALENDAR_JOBS = "http://ngo-link.com/android_api/calendar_joblist.php";
 
     CompactCalendarView compactCalendarView;
     SQLiteHandler db;

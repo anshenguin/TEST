@@ -38,9 +38,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CompanyProfileActivity extends AppCompatActivity {
-    String URL_SPINNER = "https://governmentappcom.000webhostapp.com/spinner.php";
-    String URL_COMPANY_DETAILS = "https://governmentappcom.000webhostapp.com/getCompanyDetails.php";
-    String URL_USER_EDIT_COMPANY = "https://governmentappcom.000webhostapp.com/edit_company.php";
+    String URL_SPINNER = "http://ngo-link.com/android_api/spinner.php";
+    String URL_COMPANY_DETAILS = "http://ngo-link.com/android_api/getCompanyDetails.php";
+    String URL_USER_EDIT_COMPANY = "http://ngo-link.com/android_api/edit_company.php";
 
     Spinner cityspinner;
     ArrayList<String> locations;
@@ -77,7 +77,6 @@ public class CompanyProfileActivity extends AppCompatActivity {
                 saveChanges();
             }
         });
-        dp = findViewById(R.id.dp);
 
         locations = new ArrayList<>();
         db = new SQLiteHandler(getApplicationContext());

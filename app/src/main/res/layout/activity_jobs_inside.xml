@@ -190,41 +190,21 @@
         android:layout_height="wrap_content">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Role"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:id="@+id/roletextview"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_margin="8dp"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:id="@+id/role"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/roletextview"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="4dp"
-            android:textSize="14sp"
-            android:layout_height="wrap_content"
-            android:text="Role Name Here"/>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"
             android:textStyle="bold"
             android:textSize="12sp"
             android:id="@+id/employmenttypetextview"
             android:text="Employment Type"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/role" />
+             />
 
         <TextView
             android:layout_width="0dp"
@@ -254,6 +234,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:id="@+id/reqs"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginLeft="8dp"
@@ -262,7 +243,7 @@
             android:layout_marginBottom="8dp"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="B.Tech CSE (Min 60%)"
+            android:text="12th (Min 60%)"
             app:layout_constraintTop_toBottomOf="@id/requirementstextview"
             />
 

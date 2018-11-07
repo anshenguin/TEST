@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
-    public static String URL_LOGIN = "https://governmentappcom.000webhostapp.com/login.php";
+    public static String URL_LOGIN = "http://ngo-link.com/android_api/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

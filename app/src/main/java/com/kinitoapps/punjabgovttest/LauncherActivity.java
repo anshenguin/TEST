@@ -29,7 +29,7 @@ public class LauncherActivity extends AppCompatActivity {
     SQLiteHandler sqLiteHandler;
     TextView welcome,welcomecompany,totaljobs;
     LinearLayout lin;
-    String URL_NUMBER = "https://governmentappcom.000webhostapp.com/jobcount.php";
+    String URL_NUMBER = "http://ngo-link.com/android_api/jobcount.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,13 @@ public class LauncherActivity extends AppCompatActivity {
         welcome = findViewById(R.id.welcome);
         welcomecompany = findViewById(R.id.welcomecompany);
         totaljobs = findViewById(R.id.total_number);
+        RelativeLayout dosanddonts = findViewById(R.id.dos_and_donts);
+        dosanddonts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LauncherActivity.this, DosAndDontsActivity.class));
+            }
+        });
         RelativeLayout view_profile = findViewById(R.id.view_profile);
         view_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +98,6 @@ public class LauncherActivity extends AppCompatActivity {
                 sessionManager.setLogin(false);
                 sqLiteHandler.deleteUsers();
                 Toast.makeText(LauncherActivity.this, "You have been successfully logged out.", Toast.LENGTH_SHORT).show();
-
                 startActivity(new Intent(LauncherActivity.this,LoginActivity.class));
             }
         });
